@@ -1,0 +1,1019 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>作品封面 2026</title>
+  <style>
+    :root {
+      --bg: #15151e;
+      --base-width: 1920;
+      --base-height: 1080;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      overflow: auto;
+      background: var(--bg);
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    .stage {
+      min-height: 100vh;
+      background: #15151e;
+      padding: 0;
+    }
+
+    .pages {
+      width: calc(var(--base-width) * 1px);
+      margin: 0 auto;
+    }
+
+    .pages-shell {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .pages-viewport {
+      position: relative;
+      width: 100%;
+      height: calc(2160px * var(--page-scale, 1));
+    }
+
+    .pages {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      transform-origin: top center;
+      transform: translateX(-50%) scale(var(--page-scale, 1));
+    }
+
+    .frame {
+      position: relative;
+      width: calc(var(--base-width) * 1px);
+      height: calc(var(--base-height) * 1px);
+      overflow: hidden;
+    }
+
+    .cover-bg {
+      position: absolute;
+      inset: 0;
+      background: #15151e;
+    }
+
+    .noise {
+      position: absolute;
+      inset: 0;
+      opacity: 0.13;
+      background-size: 1024px 1024px;
+      background-image: url("https://www.figma.com/api/mcp/asset/8665ec21-1c4b-49a0-b3f4-56432eb032ca");
+    }
+
+    .bg-frame {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1920px;
+      height: 1080px;
+      background: #ffffff;
+      overflow: hidden;
+    }
+
+    .hero {
+      position: absolute;
+      left: -42px;
+      top: -34px;
+      width: 2003.263px;
+      height: 1237.877px;
+      transform: rotate(-0.13deg);
+    }
+
+    .hero img {
+      position: absolute;
+      left: -7.86%;
+      top: -19.44%;
+      width: 113.52%;
+      height: 134.37%;
+      display: block;
+      max-width: none;
+    }
+
+
+    .design {
+      position: absolute;
+      left: 124.78px;
+      top: 233.28px;
+      width: 686.626px;
+      height: 139.72px;
+    }
+
+    .portfolio {
+      position: absolute;
+      left: 125px;
+      top: 399px;
+      width: 1309.982px;
+      height: 167px;
+    }
+
+    .design img,
+    .portfolio img {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .first-reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      animation: firstPageUpIn 760ms ease-out forwards;
+      will-change: opacity, transform;
+    }
+
+    .first-reveal.design-in {
+      animation-delay: 120ms;
+    }
+
+    .first-reveal.portfolio-in {
+      animation-delay: 260ms;
+    }
+
+    .first-reveal.year-in {
+      animation-delay: 420ms;
+    }
+
+    .tag {
+      position: absolute;
+      left: 768px;
+      top: 275px;
+      width: 258.062px;
+      height: 151.564px;
+      transform: rotate(-15.28deg);
+      display: grid;
+      place-items: center;
+    }
+
+    .tag-pill {
+      width: 243.337px;
+      height: 87.513px;
+      border-radius: 65px;
+      border: 0.841px solid rgba(255, 255, 255, 0.54);
+      background: linear-gradient(90deg, rgba(130, 163, 255, 0.4), rgba(159, 229, 255, 0.28));
+      backdrop-filter: blur(1.683px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tag-pill::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 10.94px;
+      width: 218.289px;
+      height: 63.952px;
+      transform: translateX(-50%);
+      border-radius: 47px;
+      background: linear-gradient(90deg, #478df4, #565de9);
+      box-shadow: 0 5.049px 3.787px rgba(60, 53, 188, 0.25);
+    }
+
+    .tag-text {
+      position: absolute;
+      font-size: 48px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: 2.4px;
+      text-transform: uppercase;
+    }
+
+    .year {
+      position: absolute;
+      left: 125px;
+      top: 592px;
+      width: 576px;
+      height: 180px;
+    }
+
+    .year img {
+      position: absolute;
+      left: 4.68px;
+      top: 32.68px;
+      width: 589.238px;
+      height: 113.1px;
+      display: block;
+    }
+
+    .audio {
+      position: absolute;
+      left: 1091px;
+      top: 705px;
+      width: 665.366px;
+      height: 209.13px;
+    }
+
+    .shape-3 {
+      position: absolute;
+      left: 40.98px;
+      top: 6.15px;
+      width: 195.951px;
+      height: 195.951px;
+    }
+
+    .shape-3 img {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .ring-1-wrap {
+      position: absolute;
+      left: 250.73px;
+      top: 0;
+      width: 209.13px;
+      height: 209.13px;
+      opacity: 0.94;
+    }
+
+    .ring-1 {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 209.13px;
+      height: 209.13px;
+      transform-origin: center center;
+      animation: spinSlow1 26s linear infinite;
+      transition: transform 240ms ease, filter 240ms ease, opacity 240ms ease;
+      cursor: pointer;
+    }
+
+    .ring-2-wrap {
+      position: absolute;
+      left: 483.98px;
+      top: 6.15px;
+      width: 195.951px;
+      height: 195.951px;
+      opacity: 0.94;
+    }
+
+    .ring-2 {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 195.951px;
+      height: 195.951px;
+      transform-origin: center center;
+      animation: spinSlow2 30s linear infinite reverse;
+      transition: transform 240ms ease, filter 240ms ease, opacity 240ms ease;
+      cursor: pointer;
+    }
+
+    .ring-1 img,
+    .ring-2 img {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .ring-1:hover,
+    .ring-2:hover {
+      transform: scale(1.08);
+      filter: drop-shadow(0 0 14px rgba(107, 160, 255, 0.9)) drop-shadow(0 0 26px rgba(119, 220, 255, 0.45));
+      opacity: 1;
+    }
+
+    .ring-1:active,
+    .ring-2:active {
+      transform: scale(1.03);
+    }
+
+    .frost-group {
+      position: absolute;
+      left: 1003px;
+      top: 668px;
+      width: 897px;
+      height: 303px;
+      pointer-events: none;
+    }
+
+    .frost {
+      position: absolute;
+      width: 227px;
+      height: 281px;
+      top: 22px;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+      mix-blend-mode: overlay;
+      opacity: 0.94;
+    }
+
+    .frost.left {
+      left: 0;
+    }
+
+    .frost.mid {
+      left: 227px;
+      top: 0;
+    }
+
+    .frost.right {
+      left: 670px;
+      top: 22px;
+      filter: blur(0.5px);
+    }
+
+    .frost-col {
+      width: 45.4px;
+      height: 100%;
+      -webkit-backdrop-filter: blur(33.22px);
+      backdrop-filter: blur(33.22px);
+      background: linear-gradient(-90deg, rgba(209, 209, 209, 0.85) 0%, rgba(53, 53, 53, 0.75) 30.527%, rgba(207, 207, 207, 0.82) 100%);
+    }
+
+    .frost.mid .frost-col:last-child {
+      background: linear-gradient(-90deg, rgba(255, 255, 255, 0.9) 0%, rgba(53, 53, 53, 0.75) 30.527%, rgba(207, 207, 207, 0.82) 100%);
+    }
+
+    @keyframes spinSlow1 {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes spinSlow2 {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes firstPageUpIn {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .frame.page-2 {
+      background: #000;
+    }
+
+    .intro-bg-cut {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+    }
+
+    .intro-image-right {
+      position: absolute;
+      right: -676px;
+      top: 36px;
+      width: 1683px;
+      height: 1683px;
+      opacity: 0.68;
+      animation: driftRight 18s ease-in-out infinite alternate;
+    }
+
+    .intro-image-left {
+      position: absolute;
+      right: 632px;
+      top: -248px;
+      width: 1683px;
+      height: 1683px;
+      animation: driftLeft 20s ease-in-out infinite alternate;
+    }
+
+    .intro-image-right img,
+    .intro-image-left img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .intro-chair {
+      position: absolute;
+      left: 1025px;
+      top: -200px;
+      width: 1037px;
+      height: 1453px;
+      opacity: 0.36;
+      animation: chairGlow 10s ease-in-out infinite;
+    }
+
+    .intro-chair img {
+      position: absolute;
+      left: -13px;
+      top: 0;
+      width: 1037px;
+      height: 1453px;
+      object-fit: cover;
+      opacity: 0.4;
+      display: block;
+    }
+
+    .intro-gradient {
+      position: absolute;
+      left: 361px;
+      top: -16px;
+      width: 1078px;
+      height: 1146px;
+      background-image: linear-gradient(268.46deg, rgba(14, 18, 27, 0.16) 9.8695%, rgb(7, 13, 21) 49.034%, rgba(13, 21, 40, 0) 86.956%);
+    }
+
+    .intro-header {
+      position: absolute;
+      left: 856px;
+      top: 134px;
+      width: 955px;
+      height: 104px;
+      color: #b1cbff;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 650ms ease-out, transform 650ms ease-out;
+    }
+    .intro-header.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .intro-name {
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 74px;
+      font-weight: 800;
+      letter-spacing: 3.7px;
+      margin: 0;
+      line-height: 1;
+    }
+
+    .intro-meta { position: absolute; left: 188px; top: 2px; width: 767px; height: 100px; }
+    .line-cyan { position: absolute; top: 10px; font-size: 32px; color: #67f8ff; font-weight: 700; letter-spacing: 1.6px; margin: 0; white-space: nowrap; }
+    .line-cyan.right { left: 358px; }
+    .line-cyan.left { left: 0; }
+    .line-gray, .line-blue { position: absolute; top: 64px; font-size: 28px; letter-spacing: 1.4px; margin: 0; white-space: nowrap; }
+    .line-gray { color: #9ca4c2; }
+    .line-blue { color: #b1cbff; }
+    .phone-label { left: 0; } .phone-value { left: 120px; }
+    .mail-label { left: 358px; } .mail-value { left: 450px; }
+
+    .timeline-1 { position: absolute; left: 768px; top: 300px; width: 1095px; color: #b1cbff; }
+    .timeline-2 { position: absolute; left: 768px; top: 779px; width: 1095px; color: #b1cbff; }
+    .timeline-reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 760ms ease, transform 760ms ease;
+      will-change: opacity, transform;
+    }
+    .timeline-reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .time { position: absolute; left: 0; top: 4px; color: #9ca4c2; font-size: 24px; letter-spacing: 1.2px; margin: 0; }
+    .dot { position: absolute; width: 20px; height: 20px; left: 217px; top: 12px; }
+    .dot.second { left: 211px; top: 13px; }
+    .company { position: absolute; left: 255px; top: 0; margin: 0; font-size: 32px; letter-spacing: 1.6px; color: #fff; }
+    .company small { font-size: 20px; color: #c4d0ff; }
+    .role { position: absolute; left: 706px; top: 6px; margin: 0; color: #477dff; font-size: 24px; letter-spacing: 1.2px; }
+    .role.second { left: 559px; }
+    .bullet-list { position: absolute; left: 255px; top: 68px; width: 816px; display: grid; gap: 12px; }
+    .bullet-list p, .bullet-list-2 p { margin: 0; font-size: 22px; line-height: 1.35; color: #b1cbff; opacity: 0.7; }
+    .bullet-list-2 { position: absolute; left: 255px; top: 61px; width: 820px; display: grid; gap: 12px; }
+
+    .work-card {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 763px;
+      height: 779px;
+      overflow: hidden;
+    }
+    .work-card-bg {
+      position: absolute;
+      left: -296px;
+      top: -64px;
+      width: 1160.062px;
+      height: 955.901px;
+      transform: rotate(11.34deg);
+    }
+    .work-card-bg img {
+      position: absolute;
+      left: 0;
+      top: -67.29%;
+      width: 100%;
+      height: 234.37%;
+      display: block;
+    }
+    .badge { position: absolute; left: -291.7px; top: -65.58px; width: 1160.062px; height: 955.901px; }
+    .photo-card-wrap { position: absolute; left: 512.7px; top: 275.58px; width: 353px; height: 478px; transform: rotate(2.11deg); }
+    .photo-card-wrap { animation: cardFloat 5.5s ease-in-out infinite; transform-origin: center center; }
+    .photo-card { position: absolute; left: 0; top: 0; width: 335.406px; height: 465.129px; border: 2px solid #5d80ff; border-radius: 12.736px; overflow: hidden; background-image: linear-gradient(203.236deg, rgba(55,92,255,0.44) 2.235%, rgba(102,130,255,0.44) 54.214%, rgba(110,144,255,0.44) 100.37%); }
+    .photo-main { position: absolute; left: 0.8px; top: 2.87px; width: 328.852px; height: 455.441px; border-radius: 7px; overflow: hidden; }
+    .photo-main img { position: absolute; left: -19.91%; top: -25.84%; width: 120.16%; height: 131.48%; display: block; }
+    .photo-bottom { position: absolute; left: -0.07px; top: 341.78px; width: 333px; height: 119.342px; opacity: 0.52; background: linear-gradient(to bottom, rgba(27,83,184,0), #1b53b8); border-radius: 4px 6px 14px 14px; }
+    .photo-top { position: absolute; left: -0.88px; top: -2.07px; width: 333px; height: 158.548px; opacity: 0.5; transform: scaleY(-1); background: linear-gradient(178.306deg, rgba(32,70,139,0) 2.5871%, rgb(27,83,184) 97.076%); border-radius: 4px 6px 14px 14px; }
+
+    .page-2 .intro-image-right,
+    .page-2 .intro-image-left,
+    .page-2 .intro-chair,
+    .page-2 .photo-card-wrap {
+      animation-play-state: paused;
+    }
+
+    .page-2.is-active .intro-image-right,
+    .page-2.is-active .intro-image-left,
+    .page-2.is-active .intro-chair,
+    .page-2.is-active .photo-card-wrap {
+      animation-play-state: running;
+    }
+
+    .frame.page-3 {
+      background: #060607;
+      overflow: hidden;
+    }
+    .p3-bg-cut {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+    }
+    .p3-glow-a { position: absolute; left: -564px; top: 65px; width: 1710px; height: 1621px; opacity: 0.9; }
+    .p3-glow-b { position: absolute; left: 879px; top: -333px; width: 1533px; height: 1460px; opacity: 0.9; }
+    .p3-glow-a img,
+    .p3-glow-b img { width: 100%; height: 100%; display: block; }
+    .p3-chair-left,
+    .p3-chair-right {
+      position: absolute;
+      top: -200px;
+      width: 1037px;
+      height: 1453px;
+      opacity: 0.36;
+      animation: chairGlow 10s ease-in-out infinite;
+    }
+    .p3-chair-left { left: -12px; }
+    .p3-chair-right { left: 1025px; }
+    .p3-chair-left img,
+    .p3-chair-right img {
+      position: absolute;
+      left: -13px;
+      top: 0;
+      width: 1037px;
+      height: 1453px;
+      object-fit: cover;
+      opacity: 0.4;
+      display: block;
+    }
+    .p3-mask-wrap {
+      position: absolute;
+      left: -91px;
+      top: 483px;
+      width: 2011px;
+      height: 631px;
+      pointer-events: none;
+    }
+    .p3-mask-columns {
+      position: absolute;
+      left: 419px;
+      top: 212px;
+      width: 1271px;
+      height: 800px;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 0;
+      opacity: 0.76;
+      mask-image: url("https://www.figma.com/api/mcp/asset/aeb547ff-8a69-403f-957b-8dec1e3a9975");
+      mask-repeat: no-repeat;
+      mask-position: 30px 0;
+      mask-size: 1211px 800px;
+      -webkit-mask-image: url("https://www.figma.com/api/mcp/asset/aeb547ff-8a69-403f-957b-8dec1e3a9975");
+      -webkit-mask-repeat: no-repeat;
+      -webkit-mask-position: 30px 0;
+      -webkit-mask-size: 1211px 800px;
+    }
+    .p3-mask-columns span {
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(21.439px);
+      -webkit-backdrop-filter: blur(21.439px);
+      background: linear-gradient(91deg, rgba(255, 255, 255, 0.1) 10.329%, rgba(255, 255, 255, 0) 96.433%);
+    }
+    .p3-orb {
+      position: absolute;
+      opacity: 0.76;
+      pointer-events: none;
+    }
+    .p3-orb.o1 { left: 860.63px; top: 417.81px; width: 390.187px; height: 390.187px; mix-blend-mode: overlay; }
+    .p3-orb.o2 { left: 843.47px; top: 400.66px; width: 424.489px; height: 424.489px; }
+    .p3-orb.o3 { left: 764.15px; top: 321.34px; width: 583.137px; height: 583.137px; mix-blend-mode: overlay; }
+    .p3-orb img { width: 100%; height: 100%; display: block; }
+    .p3-bg-right,
+    .p3-bg-left {
+      position: absolute;
+      width: 1683px;
+      height: 1683px;
+      opacity: 0.38;
+      animation: driftRight 20s ease-in-out infinite alternate;
+    }
+    .p3-bg-right { right: -567px; top: 238px; }
+    .p3-bg-left { right: 632px; top: -248px; opacity: 0.28; animation: driftLeft 22s ease-in-out infinite alternate; }
+    .p3-bg-right img,
+    .p3-bg-left img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .p3-top-title { position: absolute; left: 54px; top: 65px; color: #fff; }
+    .p3-top-title h3 { margin: 0; font-size: 40px; letter-spacing: 2px; text-transform: uppercase; background: linear-gradient(90deg,#fff,#c4d0ff); -webkit-background-clip:text; background-clip:text; color: transparent; }
+    .p3-top-title p { margin: -2px 0 0; font-size: 32px; color: #477dff; letter-spacing: 1.6px; }
+    .p3-line { position: absolute; left: 331px; top: 99px; width: 1493px; }
+    .p3-line { height: 1px; overflow: hidden; }
+    .p3-line img { width: 100%; height: 1px; display: block; object-fit: fill; }
+
+    .p3-card {
+      position: absolute;
+      width: 405px;
+      height: 577px;
+      border-radius: 25px;
+      border: 1px solid rgba(161,179,255,0.3);
+      overflow: hidden;
+      transition: transform 260ms ease, box-shadow 260ms ease, border-color 260ms ease;
+      cursor: pointer;
+      animation-play-state: paused;
+      --rot: 0deg;
+      transform: rotate(var(--rot)) translateY(0);
+      animation: p3Float 7s ease-in-out infinite;
+    }
+    .p3-card:hover {
+      transform: rotate(var(--rot)) translateY(-10px) scale(1.02);
+      box-shadow: 0 18px 50px rgba(55, 115, 255, 0.28);
+      border-color: rgba(170, 198, 255, 0.55);
+    }
+    .p3-card .idx {
+      position: absolute; left: 34px; top: 46px; font-size: 56px; letter-spacing: 2.8px; color: rgba(117,138,221,0.27); margin: 0; font-style: italic; font-weight: 700; font-family: "DingTalk JinBuTi","Segoe UI",sans-serif;
+    }
+    .p3-card .title { position: absolute; left: 34px; top: 120px; margin: 0; font-size: 44px; letter-spacing: 1.4px; background: linear-gradient(185deg,#fff 25.591%,#87aaff 97.952%); -webkit-background-clip:text; background-clip:text; color: transparent; font-weight: 700; font-family: "Alibaba PuHuiTi","Segoe UI",sans-serif; }
+    .p3-card .sub { position: absolute; left: 35px; top: 202px; margin: 0; font-size: 24px; color: #b1cbff; letter-spacing: 1px; font-family: "Alibaba PuHuiTi","Segoe UI",sans-serif; }
+    .p3-card .sub2 { top: 246px; }
+    .p3-thumb { position: absolute; left: 12px; right: 12px; bottom: 16px; height: 214px; border-radius: 12px; overflow: hidden; }
+    .p3-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .p3-card.c1 { left: 98px; top: 291px; --rot: -2.47deg; background: linear-gradient(180deg, rgba(25,44,95,0.63), rgba(74,96,156,0.63)); animation-duration: 6.2s; }
+    .p3-card.c2 { left: 503px; top: 271px; --rot: 6.01deg; background: linear-gradient(-38deg, rgba(40,49,75,0.65), rgba(32,46,80,0.65)); animation-duration: 6.8s; }
+    .p3-card.c3 { left: 946px; top: 295px; --rot: -0.61deg; background: linear-gradient(180deg, rgba(25,44,95,0.63), rgba(74,96,156,0.63)); animation-duration: 7.4s; }
+    .p3-card.c4 { left: 1347px; top: 306px; --rot: 5.14deg; border-color: rgba(122,126,175,0.2); background: linear-gradient(180deg, rgba(41,52,83,0.65), rgba(30,40,64,0.65)); animation-duration: 7.1s; }
+
+    .page-3 .p3-bg-right,
+    .page-3 .p3-bg-left,
+    .page-3 .p3-chair-left,
+    .page-3 .p3-chair-right,
+    .page-3 .p3-mask-wrap,
+    .page-3 .p3-card { animation-play-state: paused; }
+    .page-3.is-active .p3-bg-right,
+    .page-3.is-active .p3-bg-left,
+    .page-3.is-active .p3-chair-left,
+    .page-3.is-active .p3-chair-right,
+    .page-3.is-active .p3-mask-wrap,
+    .page-3.is-active .p3-card { animation-play-state: running; }
+
+    @keyframes p3Float {
+      0%, 100% { transform: rotate(var(--rot)) translateY(0); }
+      50% { transform: rotate(var(--rot)) translateY(-8px); }
+    }
+
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes driftRight {
+      from { transform: translate3d(0, 0, 0) scale(1); }
+      to { transform: translate3d(-24px, 18px, 0) scale(1.02); }
+    }
+
+    @keyframes driftLeft {
+      from { transform: translate3d(0, 0, 0) scale(1); }
+      to { transform: translate3d(28px, -16px, 0) scale(1.015); }
+    }
+
+    @keyframes chairGlow {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.45; }
+    }
+
+    @keyframes badgeFloat {
+      0%, 100% { transform: rotate(11.34deg) translateY(0); }
+      50% { transform: rotate(11.34deg) translateY(-8px); }
+    }
+
+    @keyframes cardFloat {
+      0%, 100% { transform: rotate(2.11deg) translateY(0); }
+      50% { transform: rotate(2.11deg) translateY(-10px); }
+    }
+
+
+  </style>
+</head>
+<body>
+  <main class="stage">
+    <div class="pages-shell">
+      <div class="pages-viewport" id="pagesViewport">
+        <div class="pages" id="pagesRoot">
+      <section class="frame page-1">
+        <div class="cover-bg"></div>
+        <div class="noise"></div>
+
+        <div class="bg-frame">
+          <div class="hero">
+            <img src="https://www.figma.com/api/mcp/asset/4ce4fa6f-4dd5-4ce3-b313-197ff358e90c" alt="" />
+          </div>
+        </div>
+
+        <div class="design first-reveal design-in">
+          <img src="https://www.figma.com/api/mcp/asset/531a85c7-c49d-42db-b984-1dffd846ac10" alt="DESIGN" />
+        </div>
+
+        <div class="portfolio first-reveal portfolio-in">
+          <img src="https://www.figma.com/api/mcp/asset/a91bb900-3991-469f-b57f-e80e6310f2af" alt="PORTFOLIO" />
+        </div>
+
+        <div class="tag">
+          <div class="tag-pill"></div>
+          <div class="tag-text">UI/UX</div>
+        </div>
+
+        <div class="year first-reveal year-in">
+          <img src="https://www.figma.com/api/mcp/asset/c9018bf6-90fa-4d9c-b870-d4116072c567" alt="2026" />
+        </div>
+
+        <div class="frost-group" aria-hidden="true">
+          <div class="frost left">
+            <div class="frost-col"></div>
+            <div class="frost-col"></div>
+            <div class="frost-col"></div>
+            <div class="frost-col"></div>
+            <div class="frost-col"></div>
+          </div>
+
+          <div class="frost mid">
+            <div class="frost-col"></div>
+            <div class="frost-col"></div>
+            <div class="frost-col"></div>
+            <div class="frost-col"></div>
+            <div class="frost-col"></div>
+          </div>
+
+          <div class="frost right">
+            <div class="frost-col"></div>
+            <div class="frost-col"></div>
+            <div class="frost-col"></div>
+            <div class="frost-col"></div>
+            <div class="frost-col"></div>
+          </div>
+        </div>
+
+        <div class="audio">
+          <div class="shape-3">
+            <img src="https://www.figma.com/api/mcp/asset/b31ca699-e4ff-4ab6-98c8-542ce4fcc7e6" alt="3" />
+          </div>
+
+          <div class="ring-1-wrap">
+            <div class="ring-1" data-name="1">
+              <img src="https://www.figma.com/api/mcp/asset/eb5c8aa3-ab82-4e03-975f-92a37ea07cdf" alt="1" />
+            </div>
+          </div>
+
+          <div class="ring-2-wrap">
+            <div class="ring-2" data-name="2">
+              <img src="https://www.figma.com/api/mcp/asset/a897f100-321d-4d9b-a102-92f151b1a343" alt="2" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="frame page-2" id="page2">
+        <div class="intro-bg-cut">
+          <div class="intro-image-right">
+            <img src="https://www.figma.com/api/mcp/asset/1909bdf3-6ed6-4a53-8d7a-31521c85c2b2" alt="" />
+          </div>
+          <div class="intro-image-left">
+            <img src="https://www.figma.com/api/mcp/asset/1909bdf3-6ed6-4a53-8d7a-31521c85c2b2" alt="" />
+          </div>
+          <div class="intro-chair">
+            <img src="https://www.figma.com/api/mcp/asset/c2452a73-31bb-42e6-b20e-b7f766f08c9f" alt="" />
+          </div>
+          <div class="intro-gradient"></div>
+        </div>
+
+        <div class="work-card">
+          <div class="work-card-bg">
+            <img src="https://www.figma.com/api/mcp/asset/db6040b8-b7be-4bea-a044-bf66e001adc1" alt="" />
+          </div>
+        </div>
+
+        <div class="badge">
+          <div class="photo-card-wrap">
+            <div class="photo-card">
+              <div class="photo-main">
+                <img src="https://www.figma.com/api/mcp/asset/f772ade7-b8b1-485c-bc8c-147737822594" alt="" />
+              </div>
+              <div class="photo-bottom"></div>
+              <div class="photo-top"></div>
+            </div>
+          </div>
+        </div>
+
+        <header class="intro-header" id="introHeader">
+          <h2 class="intro-name">刘婕</h2>
+          <div class="intro-meta">
+            <p class="line-cyan left">5年设计经验</p>
+            <p class="line-cyan right">福州大学-211本科</p>
+            <p class="line-gray phone-label">手机号</p>
+            <p class="line-blue phone-value">14760026599</p>
+            <p class="line-gray mail-label">邮箱</p>
+            <p class="line-blue mail-value">1335377500@qq.com</p>
+          </div>
+        </header>
+
+        <section class="timeline-1 timeline-reveal" id="timeline1">
+          <p class="time">2021.11-2025.08</p>
+          <img class="dot" src="https://www.figma.com/api/mcp/asset/c202387e-50b6-4828-977a-4d3861de4fbf" alt="" />
+          <p class="company">金卡智能集团<small>（智能燃气行业龙头）</small></p>
+          <p class="role">资深体验设计师</p>
+          <div class="bullet-list">
+            <p>2023 软件中心年度优秀个人奖，连续 3 年绩效评定为 A。</p>
+            <p>从0到1负责杭州市能源集团（一、二期）大屏、能源隐患管控系统、WEB、小程序、杭州电信智算中心等多个 G 端项目，从需求到落地全流程，推动后续增值业务达成。</p>
+            <p>主导展会、招标、展厅类视频设计全链路工作，覆盖策略制定、交互原型、视觉执行，助力团队斩获多项 G 端订单。</p>
+            <p>主导团队 AI 设计技能培训，分享实战方法与前沿工具，推动团队应用提效。</p>
+            <p>与团队共同建设维护组件库，提升研发落地效率并缩短开发周期。</p>
+          </div>
+        </section>
+
+        <section class="timeline-2 timeline-reveal" id="timeline2">
+          <p class="time">2020.06-2021.03</p>
+          <img class="dot second" src="https://www.figma.com/api/mcp/asset/c202387e-50b6-4828-977a-4d3861de4fbf" alt="" />
+          <p class="company">361度中国有限公司</p>
+          <p class="role second">产品设计助理</p>
+          <div class="bullet-list-2">
+            <p>负责流行趋势调研分析，整合归纳并协助电商团队制定产品规划策略，输出当季设计企划案（趋势、主题、色彩、图案、面料、款式），主导 21Q2 女子系列核心产品研发，最高订货量突破 26.4w 双。</p>
+            <p>负责核心鞋款的设计开发全流程，对接工厂把控工艺细节与视觉还原度，优化版型贴合度与生产可行性，保障设计方案高效落地。</p>
+          </div>
+        </section>
+      </section>
+
+      <section class="frame page-3" id="page3">
+        <div class="p3-bg-cut">
+          <div class="p3-glow-a">
+            <img src="https://www.figma.com/api/mcp/asset/1c289845-0420-4325-bace-6a5bb1004c78" alt="" />
+          </div>
+          <div class="p3-glow-b">
+            <img src="https://www.figma.com/api/mcp/asset/9347b152-9f09-4570-a29c-87d6e6eb5d23" alt="" />
+          </div>
+          <div class="p3-chair-left">
+            <img src="https://www.figma.com/api/mcp/asset/4039a3f8-b14a-4901-bc10-4c4249b8ee31" alt="" />
+          </div>
+          <div class="p3-chair-right">
+            <img src="https://www.figma.com/api/mcp/asset/4039a3f8-b14a-4901-bc10-4c4249b8ee31" alt="" />
+          </div>
+          <div class="p3-mask-wrap">
+            <div class="p3-mask-columns">
+              <span></span><span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span><span></span>
+            </div>
+            <div class="p3-orb o1">
+              <img src="https://www.figma.com/api/mcp/asset/ee6a9706-4f11-4b2e-b890-aad278f51e14" alt="" />
+            </div>
+            <div class="p3-orb o2">
+              <img src="https://www.figma.com/api/mcp/asset/11265c51-d69a-440f-9321-09b7be028fe0" alt="" />
+            </div>
+            <div class="p3-orb o3">
+              <img src="https://www.figma.com/api/mcp/asset/f51a7140-e60c-4b50-925e-553336b4cd08" alt="" />
+            </div>
+          </div>
+        </div>
+        <div class="p3-bg-left">
+          <img src="https://www.figma.com/api/mcp/asset/9681aae5-0388-4a1e-b286-7630d5cf282d" alt="" />
+        </div>
+        <div class="p3-bg-right">
+          <img src="https://www.figma.com/api/mcp/asset/9681aae5-0388-4a1e-b286-7630d5cf282d" alt="" />
+        </div>
+
+        <div class="p3-top-title">
+          <h3>PROJECTS</h3>
+          <p>项目预览</p>
+        </div>
+        <div class="p3-line">
+          <img src="https://www.figma.com/api/mcp/asset/17eb8b10-707a-4200-ba05-6567c7fdd3d8" alt="" />
+        </div>
+
+        <article class="p3-card c1">
+          <p class="idx">01</p>
+          <p class="title">B端设计</p>
+          <p class="sub">客户信息系统</p>
+          <div class="p3-thumb"><img src="https://www.figma.com/api/mcp/asset/e89f5f4e-011e-4d90-b382-4ca4261a427c" alt="" /></div>
+        </article>
+        <article class="p3-card c2">
+          <p class="idx">02</p>
+          <p class="title">小程序</p>
+          <p class="sub">AI舆情助手</p>
+          <div class="p3-thumb"><img src="https://www.figma.com/api/mcp/asset/0d00d915-d767-41d0-a998-0b9ec9315bec" alt="" /></div>
+        </article>
+        <article class="p3-card c3">
+          <p class="idx">03</p>
+          <p class="title">数据可视化</p>
+          <p class="sub">智慧门站</p>
+          <p class="sub sub2">IOT展厅</p>
+          <div class="p3-thumb"><img src="https://www.figma.com/api/mcp/asset/14a408ce-caab-490a-958d-37c15ef22d54" alt="" /></div>
+        </article>
+        <article class="p3-card c4">
+          <p class="idx">04</p>
+          <p class="title">AI实验室</p>
+          <p class="sub">运营视觉类</p>
+          <p class="sub sub2">数字人</p>
+          <div class="p3-thumb"><img src="https://www.figma.com/api/mcp/asset/2317c93e-5c7f-4c71-b87c-bef66085a944" alt="" /></div>
+        </article>
+      </section>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script>
+    (function fixed1920Scale() {
+      const viewport = document.getElementById("pagesViewport");
+      const baseWidth = 1920;
+      const baseHeight = 3240;
+      if (!viewport) return;
+
+      function updateScale() {
+        const scale = Math.min(window.innerWidth / baseWidth, 1);
+        document.documentElement.style.setProperty("--page-scale", String(scale));
+        viewport.style.height = `${baseHeight * scale}px`;
+      }
+
+      updateScale();
+      window.addEventListener("resize", updateScale);
+    })();
+
+    (function revealExperienceOnPage2() {
+      const page2 = document.getElementById("page2");
+      const introHeader = document.getElementById("introHeader");
+      const timeline1 = document.getElementById("timeline1");
+      const timeline2 = document.getElementById("timeline2");
+      if (!page2 || !introHeader || !timeline1 || !timeline2) return;
+
+      let played = false;
+      const observer = new IntersectionObserver(
+        (entries) => {
+          const entry = entries[0];
+          if (!entry || !entry.isIntersecting || played) return;
+          played = true;
+
+          page2.classList.add("is-active");
+          introHeader.classList.add("is-visible");
+          timeline1.classList.add("is-visible");
+          window.setTimeout(() => {
+            timeline2.classList.add("is-visible");
+          }, 650);
+
+          observer.disconnect();
+        },
+        {
+          threshold: 0.42
+        }
+      );
+
+      observer.observe(page2);
+    })();
+
+    (function activatePage3Motion() {
+      const page3 = document.getElementById("page3");
+      if (!page3) return;
+      const observer = new IntersectionObserver(
+        (entries) => {
+          const entry = entries[0];
+          if (!entry) return;
+          if (entry.isIntersecting) page3.classList.add("is-active");
+        },
+        { threshold: 0.35 }
+      );
+      observer.observe(page3);
+    })();
+  </script>
+</body>
+</html>
