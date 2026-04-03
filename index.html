@@ -44,7 +44,7 @@
     .pages-viewport {
       position: relative;
       width: 100%;
-      height: calc(2160px * var(--page-scale, 1));
+      height: calc(4320px * var(--page-scale, 1));
     }
 
     .pages {
@@ -669,8 +669,31 @@
       position: absolute; left: 34px; top: 46px; font-size: 56px; letter-spacing: 2.8px; color: rgba(117,138,221,0.27); margin: 0; font-style: italic; font-weight: 700; font-family: "DingTalk JinBuTi","Segoe UI",sans-serif;
     }
     .p3-card .title { position: absolute; left: 34px; top: 120px; margin: 0; font-size: 44px; letter-spacing: 1.4px; background: linear-gradient(185deg,#fff 25.591%,#87aaff 97.952%); -webkit-background-clip:text; background-clip:text; color: transparent; font-weight: 700; font-family: "Alibaba PuHuiTi","Segoe UI",sans-serif; }
-    .p3-card .sub { position: absolute; left: 35px; top: 202px; margin: 0; font-size: 24px; color: #b1cbff; letter-spacing: 1px; font-family: "Alibaba PuHuiTi","Segoe UI",sans-serif; }
-    .p3-card .sub2 { top: 246px; }
+    .p3-card .sub {
+      position: absolute;
+      left: 35px;
+      top: 202px;
+      margin: 0;
+      font-size: 24px;
+      color: #b1cbff;
+      letter-spacing: 1px;
+      font-family: "Alibaba PuHuiTi","Segoe UI",sans-serif;
+      font-weight: 400;
+      display: inline-block;
+      width: fit-content;
+      max-width: calc(100% - 48px);
+      cursor: default;
+      transition: color 0.2s ease;
+    }
+
+    .p3-card .sub2 {
+      top: 246px;
+    }
+
+    .p3-card .sub:hover {
+      color: #ffffff;
+      font-weight: 700;
+    }
     .p3-thumb { position: absolute; left: 12px; right: 12px; bottom: 16px; height: 214px; border-radius: 12px; overflow: hidden; }
     .p3-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
@@ -695,6 +718,251 @@
     @keyframes p3Float {
       0%, 100% { transform: rotate(var(--rot)) translateY(0); }
       50% { transform: rotate(var(--rot)) translateY(-8px); }
+    }
+
+    .frame.page-4 {
+      background: #060607;
+      overflow: hidden;
+    }
+
+    .p4-bg-cut {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+    }
+
+    .p4-bg-main {
+      position: absolute;
+      left: -37px;
+      top: -155px;
+      width: 1993.119px;
+      height: 1489px;
+      opacity: 0.85;
+    }
+
+    .p4-bg-main img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .p4-thankyou {
+      position: absolute;
+      left: calc(50% - 5.54px);
+      top: 474.04px;
+      width: 1405.804px;
+      height: 171.36px;
+      transform: translateX(-50%) translateY(48px);
+      opacity: 0;
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .page-4.p4-show-title .p4-thankyou {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .p4-thankyou img {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .p4-ui {
+      position: absolute;
+      left: calc(50% + 366.5px);
+      top: 538px;
+      width: 337px;
+      height: 211px;
+      transform: translateX(-50%) translateY(40px);
+      opacity: 0;
+      transition: opacity 0.95s ease 0.12s, transform 0.95s ease 0.12s;
+    }
+
+    .page-4.p4-show-title .p4-ui {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .p4-ui-rot {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: rotate(-8.34deg);
+    }
+
+    .p4-pill-wrap {
+      margin-top: 4px;
+      margin-left: 8px;
+    }
+
+    .p4-pill {
+      position: relative;
+      width: 295px;
+      height: 88px;
+      border-radius: 65px;
+      border: 0.841px solid rgba(255, 255, 255, 0.54);
+      background: linear-gradient(90deg, rgba(130, 163, 255, 0.4), rgba(159, 229, 255, 0.28));
+      backdrop-filter: blur(1.683px);
+      -webkit-backdrop-filter: blur(1.683px);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .p4-pill::after {
+      content: "";
+      position: absolute;
+      left: calc(50% + 1.79px);
+      top: 10.94px;
+      transform: translateX(-50%);
+      width: 267.163px;
+      height: 66px;
+      border-radius: 47px;
+      background: linear-gradient(90deg, #478df4, #565de9);
+      box-shadow: 0 5.049px 3.787px rgba(60, 53, 188, 0.25);
+    }
+
+    .p4-pill span {
+      position: relative;
+      z-index: 1;
+      font-size: 36px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      font-family: "Source Han Sans CN", "PingFang SC", "Microsoft YaHei", sans-serif;
+    }
+
+    .p4-deco {
+      position: absolute;
+    }
+
+    .p4-deco.d1 { left: 1542px; top: 163px; width: 272.007px; height: 272.007px; }
+    .p4-deco.d2 { left: 259px; top: 244px; width: 178.514px; height: 178.514px; }
+    .p4-deco.d3 { left: 95px; top: 516px; width: 209.13px; height: 209.13px; }
+
+    .p4-deco-spin {
+      width: 100%;
+      height: 100%;
+      transform-origin: center center;
+      animation-play-state: paused;
+      transition: transform 240ms ease, filter 240ms ease, opacity 240ms ease;
+      cursor: pointer;
+    }
+
+    .p4-deco.d1 .p4-deco-spin {
+      animation: spinSlow1 26s linear infinite;
+    }
+
+    .p4-deco.d2 .p4-deco-spin {
+      animation: spinSlow2 30s linear infinite reverse;
+    }
+
+    .p4-deco.d3 .p4-deco-spin {
+      animation: spinSlow1 28s linear infinite;
+    }
+
+    .page-4.is-active .p4-deco-spin {
+      animation-play-state: running;
+    }
+
+    .p4-deco-spin:hover {
+      transform: scale(1.08);
+      filter: drop-shadow(0 0 14px rgba(107, 160, 255, 0.9)) drop-shadow(0 0 26px rgba(119, 220, 255, 0.45));
+      opacity: 1;
+    }
+
+    .p4-deco-spin:active {
+      transform: scale(1.03);
+    }
+
+    .p4-deco img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      pointer-events: none;
+    }
+
+    .p4-footer {
+      position: absolute;
+      top: 954px;
+      color: #d5e3ff;
+      font-size: 28px;
+      letter-spacing: 1.4px;
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+
+    .p4-footer.email { left: 80px; }
+    .p4-footer.email .p4-footer-row { gap: 6px; }
+    .p4-footer.tel {
+      left: 1648px;
+      transition: opacity 0.75s ease 0.14s, transform 0.75s ease 0.14s;
+    }
+
+    .p4-footer-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 2px;
+    }
+
+    .p4-footer-row img {
+      width: 30px;
+      height: 30px;
+      display: block;
+    }
+
+    .p4-footer-label {
+      margin: 0;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-family: "Alibaba PuHuiTi", "Segoe UI", sans-serif;
+    }
+
+    .p4-footer-value {
+      margin: 0;
+      font-weight: 400;
+      font-family: "Alibaba PuHuiTi", "Segoe UI", sans-serif;
+    }
+
+    .p4-line {
+      position: absolute;
+      left: calc(50% + 47.25px);
+      top: 1006.3px;
+      width: 1050.499px;
+      height: 1px;
+      overflow: hidden;
+      transform: translateX(-50%) translateY(20px);
+      opacity: 0;
+      transition: opacity 0.7s ease 0.22s, transform 0.7s ease 0.22s;
+    }
+
+    .p4-line img {
+      width: 100%;
+      height: 1px;
+      display: block;
+      object-fit: fill;
+    }
+
+    .page-4.p4-show-footer .p4-footer.email,
+    .page-4.p4-show-footer .p4-footer.tel {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .page-4.p4-show-footer .p4-line {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
     }
 
     @keyframes fadeSlideUp {
@@ -949,6 +1217,64 @@
           <div class="p3-thumb"><img src="https://www.figma.com/api/mcp/asset/2317c93e-5c7f-4c71-b87c-bef66085a944" alt="" /></div>
         </article>
       </section>
+
+      <section class="frame page-4" id="page4">
+        <div class="p4-bg-cut">
+          <div class="p4-bg-main">
+            <img src="https://www.figma.com/api/mcp/asset/5752a12b-8161-4688-8954-2bfac609549b" alt="" />
+          </div>
+        </div>
+
+        <div class="p4-thankyou">
+          <img src="https://www.figma.com/api/mcp/asset/395770b7-293f-45b2-8507-6733736a239a" alt="THANK YOU" />
+        </div>
+
+        <div class="p4-ui">
+          <div class="p4-ui-rot">
+            <div class="p4-pill-wrap">
+              <div class="p4-pill">
+                <span>for watch</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="p4-deco d1" data-name="1">
+          <div class="p4-deco-spin">
+            <img src="https://www.figma.com/api/mcp/asset/4288c9a4-8552-4fd4-9a01-7b56fc707fc0" alt="" />
+          </div>
+        </div>
+        <div class="p4-deco d2" data-name="2">
+          <div class="p4-deco-spin">
+            <img src="https://www.figma.com/api/mcp/asset/27b08289-acd7-401d-9c1b-3ea4932750bb" alt="" />
+          </div>
+        </div>
+        <div class="p4-deco d3" data-name="3">
+          <div class="p4-deco-spin">
+            <img src="https://www.figma.com/api/mcp/asset/3f4714d5-b18b-43b7-a360-8f2a379347c8" alt="" />
+          </div>
+        </div>
+
+        <div class="p4-footer email">
+          <div class="p4-footer-row">
+            <img src="https://www.figma.com/api/mcp/asset/0c9f2ad5-a5d8-4e0c-ab1e-7e23b902261c" alt="" />
+            <p class="p4-footer-label">Email</p>
+          </div>
+          <p class="p4-footer-value">1335377500@qq.com</p>
+        </div>
+
+        <div class="p4-footer tel">
+          <div class="p4-footer-row">
+            <img src="https://www.figma.com/api/mcp/asset/fe93e921-7228-4112-9327-67b92eb1a1f2" alt="" />
+            <p class="p4-footer-label">Tel</p>
+          </div>
+          <p class="p4-footer-value">14760026599</p>
+        </div>
+
+        <div class="p4-line">
+          <img src="https://www.figma.com/api/mcp/asset/81ae9dd8-017b-459e-b913-908d2ecdc355" alt="" />
+        </div>
+      </section>
         </div>
       </div>
     </div>
@@ -957,7 +1283,7 @@
     (function fixed1920Scale() {
       const viewport = document.getElementById("pagesViewport");
       const baseWidth = 1920;
-      const baseHeight = 3240;
+      const baseHeight = 4320;
       if (!viewport) return;
 
       function updateScale() {
@@ -1013,6 +1339,30 @@
         { threshold: 0.35 }
       );
       observer.observe(page3);
+    })();
+
+    (function activatePage4Motion() {
+      const page4 = document.getElementById("page4");
+      if (!page4) return;
+      let played = false;
+      const observer = new IntersectionObserver(
+        (entries) => {
+          const entry = entries[0];
+          if (!entry || !entry.isIntersecting || played) return;
+          played = true;
+          page4.classList.add("is-active");
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              page4.classList.add("p4-show-title");
+            });
+          });
+          window.setTimeout(() => {
+            page4.classList.add("p4-show-footer");
+          }, 820);
+        },
+        { threshold: 0.3 }
+      );
+      observer.observe(page4);
     })();
   </script>
 </body>
