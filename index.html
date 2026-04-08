@@ -694,6 +694,283 @@
       color: #ffffff;
       font-weight: 700;
     }
+
+    .p3-card .sub.p3-smart-gate-trigger {
+      cursor: pointer;
+    }
+
+    .p3-card .sub.p3-iot-trigger {
+      cursor: pointer;
+    }
+
+    .p3-card .sub.p3-cis-trigger {
+      cursor: pointer;
+    }
+
+    .p3-card .sub.p3-sentiment-trigger {
+      cursor: pointer;
+    }
+
+    .p3-card .sub.p3-ops-visual-trigger {
+      cursor: pointer;
+    }
+
+    .p3-card .sub.p3-digital-human-trigger {
+      cursor: pointer;
+    }
+
+    .digital-human-figma-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1920 / 5849;
+      overflow: hidden;
+    }
+
+    .digital-human-video-slot {
+      position: absolute;
+      left: calc(100% * 269 / 1920);
+      top: calc(100% * 4414 / 5849);
+      width: calc(100% * 1381 / 1920);
+      height: calc(100% * 783 / 5849);
+      z-index: 4;
+      border-radius: min(23px, 2.2vw);
+      overflow: hidden;
+      box-sizing: border-box;
+      background: #0c0e14;
+    }
+
+    .digital-human-ae-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      cursor: pointer;
+    }
+
+    .digital-human-ae-play {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      width: 76px;
+      height: 76px;
+      border: none;
+      border-radius: 50%;
+      padding: 0;
+      cursor: pointer;
+      background: rgba(8, 10, 18, 0.55);
+      color: #f2f4ff;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .digital-human-ae-play:hover {
+      transform: translate(-50%, -50%) scale(1.05);
+      background: rgba(20, 28, 48, 0.72);
+    }
+
+    .digital-human-video-slot.is-playing .digital-human-ae-play {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .digital-human-ae-play-icon {
+      display: block;
+      margin-left: 4px;
+      font-size: 28px;
+      line-height: 1;
+    }
+
+    .folio-abs-stack {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .folio-abs-stack--8994 {
+      aspect-ratio: 1920 / 8994;
+    }
+
+    .folio-abs-stack--8558 {
+      aspect-ratio: 1920 / 8558;
+    }
+
+    .folio-abs-stack img {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+
+    .smart-gate-keyframe-layer {
+      position: absolute;
+      left: 2.5%;
+      right: 2.5%;
+      top: 83.5%;
+      bottom: 0.35%;
+      z-index: 6;
+      min-height: 48px;
+      pointer-events: auto;
+      box-sizing: border-box;
+      cursor: pointer;
+      background: transparent;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .smart-gate-keyframe-layer:focus {
+      outline: none;
+    }
+
+    .cis-gallery-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 100001;
+    }
+
+    .cis-gallery-modal.is-open {
+      display: block;
+    }
+
+    .cis-gallery-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(4, 6, 14, 0.88);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      z-index: 0;
+    }
+
+    .cis-gallery-scroll {
+      position: fixed;
+      inset: 0;
+      overflow-y: auto;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+      z-index: 1;
+      padding: 56px 0 40px;
+      box-sizing: border-box;
+    }
+
+    .cis-gallery-inner {
+      width: min(1920px, 100%);
+      margin: 0 auto;
+      background: #0b0f18;
+    }
+
+    .cis-gallery-inner img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .cis-gallery-inner .digital-human-figma-frame .dh-slice {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      max-width: none;
+      display: block;
+      object-fit: cover;
+      object-position: top center;
+    }
+
+    .cis-gallery-inner .digital-human-figma-frame .dh-slice--19 {
+      top: 0;
+      height: calc(100% * 2512 / 5849);
+    }
+
+    .cis-gallery-inner .digital-human-figma-frame .dh-slice--20 {
+      top: calc(100% * 2512 / 5849);
+      height: calc(100% * 3337 / 5849);
+    }
+
+    .cis-gallery-close-fixed {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      z-index: 100002;
+    }
+
+    #smartGateVideoModal.is-open,
+    #iotVideoModal.is-open {
+      z-index: 100100;
+    }
+
+    .video-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 100000;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      box-sizing: border-box;
+    }
+
+    .video-modal.is-open {
+      display: flex;
+    }
+
+    .video-modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(4, 6, 14, 0.82);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .video-modal-panel {
+      position: relative;
+      z-index: 1;
+      width: min(960px, 92vw);
+      max-height: 85vh;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(140, 170, 255, 0.35);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+      background: #0a0e18;
+    }
+
+    .video-modal-panel video {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 80vh;
+    }
+
+    .video-modal-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 2;
+      width: 40px;
+      height: 40px;
+      border: none;
+      border-radius: 10px;
+      background: rgba(20, 28, 48, 0.9);
+      color: #e8ecff;
+      font-size: 24px;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .video-modal-close:hover {
+      background: rgba(80, 110, 200, 0.45);
+      color: #fff;
+    }
+
+    body.video-modal-open {
+      overflow: hidden;
+    }
+
     .p3-thumb { position: absolute; left: 12px; right: 12px; bottom: 16px; height: 214px; border-radius: 12px; overflow: hidden; }
     .p3-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
@@ -1193,27 +1470,76 @@
         <article class="p3-card c1">
           <p class="idx">01</p>
           <p class="title">B端设计</p>
-          <p class="sub">客户信息系统</p>
+          <p
+            class="sub p3-cis-trigger"
+            role="button"
+            tabindex="0"
+            aria-haspopup="dialog"
+            aria-controls="cisGalleryModal"
+          >
+            客户信息系统
+          </p>
           <div class="p3-thumb"><img src="https://www.figma.com/api/mcp/asset/e89f5f4e-011e-4d90-b382-4ca4261a427c" alt="" /></div>
         </article>
         <article class="p3-card c2">
           <p class="idx">02</p>
           <p class="title">小程序</p>
-          <p class="sub">AI舆情助手</p>
+          <p
+            class="sub p3-sentiment-trigger"
+            role="button"
+            tabindex="0"
+            aria-haspopup="dialog"
+            aria-controls="sentimentGalleryModal"
+          >
+            AI舆情助手
+          </p>
           <div class="p3-thumb"><img src="https://www.figma.com/api/mcp/asset/0d00d915-d767-41d0-a998-0b9ec9315bec" alt="" /></div>
         </article>
         <article class="p3-card c3">
           <p class="idx">03</p>
           <p class="title">数据可视化</p>
-          <p class="sub">智慧门站</p>
-          <p class="sub sub2">IOT展厅</p>
+          <p
+            class="sub p3-smart-gate-trigger"
+            role="button"
+            tabindex="0"
+            aria-haspopup="dialog"
+            aria-controls="smartGateGalleryModal"
+          >
+            智慧门站
+          </p>
+          <p
+            class="sub sub2 p3-iot-trigger"
+            role="button"
+            tabindex="0"
+            aria-haspopup="dialog"
+            aria-controls="iotVideoModal"
+            data-video-src="https://wfl91ymaecqivvtz.public.blob.vercel-storage.com/iot%E8%A7%86%E9%A2%91.mp4"
+          >
+            IOT展厅
+          </p>
           <div class="p3-thumb"><img src="https://www.figma.com/api/mcp/asset/14a408ce-caab-490a-958d-37c15ef22d54" alt="" /></div>
         </article>
         <article class="p3-card c4">
           <p class="idx">04</p>
           <p class="title">AI实验室</p>
-          <p class="sub">运营视觉类</p>
-          <p class="sub sub2">数字人</p>
+          <p
+            class="sub p3-ops-visual-trigger"
+            role="button"
+            tabindex="0"
+            aria-haspopup="dialog"
+            aria-controls="opsVisualModal"
+          >
+            运营视觉类
+          </p>
+          <p
+            class="sub sub2 p3-digital-human-trigger"
+            role="button"
+            tabindex="0"
+            aria-haspopup="dialog"
+            aria-controls="digitalHumanModal"
+          >
+            数字人
+          </p>
           <div class="p3-thumb"><img src="https://www.figma.com/api/mcp/asset/2317c93e-5c7f-4c71-b87c-bef66085a944" alt="" /></div>
         </article>
       </section>
@@ -1279,6 +1605,138 @@
       </div>
     </div>
   </main>
+
+  <div class="video-modal" id="smartGateVideoModal" aria-hidden="true" aria-modal="true" role="dialog" aria-label="智慧门站视频">
+    <div class="video-modal-backdrop" data-video-modal-close></div>
+    <div class="video-modal-panel">
+      <button type="button" class="video-modal-close" data-video-modal-close aria-label="关闭">×</button>
+      <video id="smartGateVideo" controls playsinline preload="metadata"></video>
+    </div>
+  </div>
+
+  <div class="video-modal" id="iotVideoModal" aria-hidden="true" aria-modal="true" role="dialog" aria-label="IOT展厅视频">
+    <div class="video-modal-backdrop" data-iot-video-close></div>
+    <div class="video-modal-panel">
+      <button type="button" class="video-modal-close" data-iot-video-close aria-label="关闭">×</button>
+      <video id="iotVideo" controls playsinline preload="metadata"></video>
+    </div>
+  </div>
+
+  <div class="cis-gallery-modal" id="cisGalleryModal" aria-hidden="true" aria-modal="true" role="dialog" aria-label="云 CIS 客户信息系统">
+    <div class="cis-gallery-backdrop" data-cis-gallery-close></div>
+    <button type="button" class="video-modal-close cis-gallery-close-fixed" data-cis-gallery-close aria-label="关闭">×</button>
+    <div class="cis-gallery-scroll" id="cisGalleryScroll">
+      <div class="cis-gallery-inner">
+        <section class="cis-cis-project" aria-label="cis项目">
+          <img src="https://www.figma.com/api/mcp/asset/a0839028-f67c-45e1-8917-1386d81883f6" alt="" />
+          <img src="https://www.figma.com/api/mcp/asset/4e8fc55a-1924-4014-aec4-5da11885a861" alt="" />
+          <img src="https://www.figma.com/api/mcp/asset/0d24bf72-15a2-4f54-aebc-d0acb89a4808" alt="" />
+          <img src="https://www.figma.com/api/mcp/asset/182ae98a-dc71-4c30-af7f-579bbdaa6aed" alt="" />
+          <img src="https://www.figma.com/api/mcp/asset/fd360cee-f67d-42c0-8cbd-2c931492f50d" alt="" />
+          <img src="https://www.figma.com/api/mcp/asset/01947de9-8153-4063-acb5-000e1e15613d" alt="" />
+          <img src="https://www.figma.com/api/mcp/asset/eb7000b4-34ff-43c1-bf53-76880a4e4b5e" alt="" />
+          <img src="https://www.figma.com/api/mcp/asset/e3f9a192-1bd1-4e37-9bfd-98333ba76a45" alt="" />
+          <img src="https://www.figma.com/api/mcp/asset/67187549-e091-453f-8642-8dd5e0d87037" alt="" />
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <div class="cis-gallery-modal" id="sentimentGalleryModal" aria-hidden="true" aria-modal="true" role="dialog" aria-label="AI 舆情助手">
+    <div class="cis-gallery-backdrop" data-sentiment-gallery-close></div>
+    <button type="button" class="video-modal-close cis-gallery-close-fixed" data-sentiment-gallery-close aria-label="关闭">×</button>
+    <div class="cis-gallery-scroll" id="sentimentGalleryScroll">
+      <div class="cis-gallery-inner">
+        <div class="folio-abs-stack folio-abs-stack--8994" aria-hidden="true">
+          <img src="https://www.figma.com/api/mcp/asset/df5c1e64-105c-46f0-b922-2e2eb22a39bc" alt="" style="top: 33.314%; height: 27.796%;" />
+          <img src="https://www.figma.com/api/mcp/asset/e2445877-84b0-4427-9151-99f672399a5c" alt="" style="top: 61.107%; height: 14.465%;" />
+          <img src="https://www.figma.com/api/mcp/asset/ccc4d755-1809-487b-aeec-a942a69822bb" alt="" style="top: 75.572%; height: 12.008%;" />
+          <img src="https://www.figma.com/api/mcp/asset/474e4701-6ac9-468b-aa3c-435187c9ed86" alt="" style="top: 21.302%; height: 12.008%;" />
+          <img src="https://www.figma.com/api/mcp/asset/4a29dab7-70ba-43f6-b3f4-1a682c521c86" alt="" style="top: 87.527%; height: 12.474%;" />
+          <img src="https://www.figma.com/api/mcp/asset/9466cb3e-a394-4830-b3e0-cff4179a3886" alt="" style="top: 0; height: 21.302%;" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="cis-gallery-modal"
+    id="smartGateGalleryModal"
+    aria-hidden="true"
+    aria-modal="true"
+    role="dialog"
+    aria-label="智慧门站项目展示"
+    data-video-src="https://wfl91ymaecqivvtz.public.blob.vercel-storage.com/%E6%99%BA%E6%85%A7%E5%9C%BA%E7%AB%99.mp4"
+  >
+    <div class="cis-gallery-backdrop" data-smart-gate-gallery-close></div>
+    <button type="button" class="video-modal-close cis-gallery-close-fixed" data-smart-gate-gallery-close aria-label="关闭">×</button>
+    <div class="cis-gallery-scroll" id="smartGateGalleryScroll">
+      <div class="cis-gallery-inner">
+        <div class="folio-abs-stack folio-abs-stack--8558" aria-hidden="true">
+          <img src="https://www.figma.com/api/mcp/asset/6db55362-c156-4fed-993e-ea412876273a" alt="" style="top: 45.1157%; height: 27.3077%;" />
+          <img src="https://www.figma.com/api/mcp/asset/9df1407e-92c3-40cf-ad00-cada683da5e0" alt="" style="top: 72.2599%; height: 27.7401%;" />
+          <img src="https://www.figma.com/api/mcp/asset/1afbfb7c-057f-4cd1-91be-1066abadc4b6" alt="" style="top: 12.6198%; height: 32.4959%;" />
+          <img src="https://www.figma.com/api/mcp/asset/2ab2a49f-71c7-45f7-96f2-8bef3c9c7b59" alt="" style="top: 0; height: 12.6198%;" />
+          <div
+            class="smart-gate-keyframe-layer"
+            id="smartGateKeyframeHit"
+            role="button"
+            tabindex="0"
+            data-smart-gate-play-video
+            aria-label="关键帧区域，点击播放智慧门站演示视频"
+          ></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cis-gallery-modal" id="opsVisualModal" aria-hidden="true" aria-modal="true" role="dialog" aria-label="运营视觉类作品展示">
+    <div class="cis-gallery-backdrop" data-ops-visual-close></div>
+    <button type="button" class="video-modal-close cis-gallery-close-fixed" data-ops-visual-close aria-label="关闭">×</button>
+    <div class="cis-gallery-scroll" id="opsVisualScroll">
+      <div class="cis-gallery-inner">
+        <section class="ops-visual-sheet" aria-label="运营视觉">
+          <img src="https://www.figma.com/api/mcp/asset/bb254618-bac6-4e44-b889-f2ff5460ca0d" alt="" />
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <div class="cis-gallery-modal" id="digitalHumanModal" aria-hidden="true" aria-modal="true" role="dialog" aria-label="AI 数字人作品展示">
+    <div class="cis-gallery-backdrop" data-digital-human-close></div>
+    <button type="button" class="video-modal-close cis-gallery-close-fixed" data-digital-human-close aria-label="关闭">×</button>
+    <div class="cis-gallery-scroll" id="digitalHumanScroll">
+      <div class="cis-gallery-inner">
+        <section class="digital-human-sheet" aria-label="数字人">
+          <div class="digital-human-figma-frame">
+            <img
+              class="dh-slice dh-slice--19"
+              src="https://www.figma.com/api/mcp/asset/845b7730-3b6e-4bab-bd45-1e03e7de44c9"
+              alt=""
+            />
+            <img
+              class="dh-slice dh-slice--20"
+              src="https://www.figma.com/api/mcp/asset/772412e3-a143-49f5-9188-6edc74a5c019"
+              alt=""
+            />
+            <div class="digital-human-video-slot" data-digital-human-ae>
+              <video
+                id="digitalHumanAeVideo"
+                class="digital-human-ae-video"
+                playsinline
+                preload="metadata"
+                src="https://wfl91ymaecqivvtz.public.blob.vercel-storage.com/%E5%AD%97%E5%B9%95%E7%89%88%E6%9C%AC.mp4"
+              ></video>
+              <button type="button" class="digital-human-ae-play" data-digital-human-ae-play aria-label="播放 AE 成片视频">
+                <span class="digital-human-ae-play-icon" aria-hidden="true">▶</span>
+              </button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
   <script>
     (function fixed1920Scale() {
       const viewport = document.getElementById("pagesViewport");
@@ -1363,6 +1821,342 @@
         { threshold: 0.3 }
       );
       observer.observe(page4);
+    })();
+
+    (function smartGateGalleryAndVideo() {
+      const galleryModal = document.getElementById("smartGateGalleryModal");
+      const galleryScroll = document.getElementById("smartGateGalleryScroll");
+      const trigger = document.querySelector(".p3-smart-gate-trigger");
+      const videoModal = document.getElementById("smartGateVideoModal");
+      const video = document.getElementById("smartGateVideo");
+      if (!galleryModal || !trigger || !videoModal || !video) return;
+
+      const src = galleryModal.getAttribute("data-video-src");
+      if (!src) return;
+
+      function openGallery() {
+        galleryModal.classList.add("is-open");
+        galleryModal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("video-modal-open");
+        if (galleryScroll) galleryScroll.scrollTop = 0;
+      }
+
+      function closeGallery() {
+        if (videoModal.classList.contains("is-open")) closeVideo();
+        galleryModal.classList.remove("is-open");
+        galleryModal.setAttribute("aria-hidden", "true");
+        if (!videoModal.classList.contains("is-open")) document.body.classList.remove("video-modal-open");
+      }
+
+      function openVideo() {
+        if (!video.getAttribute("src")) {
+          video.setAttribute("src", src);
+          video.load();
+        }
+        videoModal.classList.add("is-open");
+        videoModal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("video-modal-open");
+        const playAttempt = video.play();
+        if (playAttempt && typeof playAttempt.catch === "function") playAttempt.catch(() => {});
+      }
+
+      function closeVideo() {
+        videoModal.classList.remove("is-open");
+        videoModal.setAttribute("aria-hidden", "true");
+        video.pause();
+        if (!galleryModal.classList.contains("is-open")) document.body.classList.remove("video-modal-open");
+      }
+
+      trigger.addEventListener("click", (e) => {
+        e.stopPropagation();
+        openGallery();
+      });
+
+      trigger.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          openGallery();
+        }
+      });
+
+      galleryModal.querySelectorAll("[data-smart-gate-gallery-close]").forEach((el) => {
+        el.addEventListener("click", closeGallery);
+      });
+
+      const playHit = galleryModal.querySelector("[data-smart-gate-play-video]");
+      if (playHit) {
+        playHit.addEventListener("click", (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          openVideo();
+        });
+        playHit.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            openVideo();
+          }
+        });
+      }
+
+      videoModal.querySelectorAll("[data-video-modal-close]").forEach((el) => {
+        el.addEventListener("click", closeVideo);
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key !== "Escape") return;
+        if (videoModal.classList.contains("is-open")) {
+          closeVideo();
+          return;
+        }
+        if (galleryModal.classList.contains("is-open")) closeGallery();
+      });
+    })();
+
+    (function iotVideoModal() {
+      const modal = document.getElementById("iotVideoModal");
+      const video = document.getElementById("iotVideo");
+      const trigger = document.querySelector(".p3-iot-trigger");
+      if (!modal || !video || !trigger) return;
+
+      const src = trigger.getAttribute("data-video-src");
+      if (!src) return;
+
+      function openModal() {
+        if (!video.getAttribute("src")) {
+          video.setAttribute("src", src);
+          video.load();
+        }
+        modal.classList.add("is-open");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("video-modal-open");
+        const playAttempt = video.play();
+        if (playAttempt && typeof playAttempt.catch === "function") playAttempt.catch(() => {});
+      }
+
+      function closeModal() {
+        modal.classList.remove("is-open");
+        modal.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("video-modal-open");
+        video.pause();
+      }
+
+      trigger.addEventListener("click", (e) => {
+        e.stopPropagation();
+        openModal();
+      });
+
+      trigger.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          openModal();
+        }
+      });
+
+      modal.querySelectorAll("[data-iot-video-close]").forEach((el) => {
+        el.addEventListener("click", closeModal);
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && modal.classList.contains("is-open")) closeModal();
+      });
+    })();
+
+    (function cisGalleryModal() {
+      const modal = document.getElementById("cisGalleryModal");
+      const scrollEl = document.getElementById("cisGalleryScroll");
+      const trigger = document.querySelector(".p3-cis-trigger");
+      if (!modal || !trigger) return;
+
+      function openModal() {
+        modal.classList.add("is-open");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("video-modal-open");
+        if (scrollEl) scrollEl.scrollTop = 0;
+      }
+
+      function closeModal() {
+        modal.classList.remove("is-open");
+        modal.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("video-modal-open");
+      }
+
+      trigger.addEventListener("click", (e) => {
+        e.stopPropagation();
+        openModal();
+      });
+
+      trigger.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          openModal();
+        }
+      });
+
+      modal.querySelectorAll("[data-cis-gallery-close]").forEach((el) => {
+        el.addEventListener("click", closeModal);
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && modal.classList.contains("is-open")) closeModal();
+      });
+    })();
+
+    (function sentimentGalleryModal() {
+      const modal = document.getElementById("sentimentGalleryModal");
+      const scrollEl = document.getElementById("sentimentGalleryScroll");
+      const trigger = document.querySelector(".p3-sentiment-trigger");
+      if (!modal || !trigger) return;
+
+      function openModal() {
+        modal.classList.add("is-open");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("video-modal-open");
+        if (scrollEl) scrollEl.scrollTop = 0;
+      }
+
+      function closeModal() {
+        modal.classList.remove("is-open");
+        modal.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("video-modal-open");
+      }
+
+      trigger.addEventListener("click", (e) => {
+        e.stopPropagation();
+        openModal();
+      });
+
+      trigger.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          openModal();
+        }
+      });
+
+      modal.querySelectorAll("[data-sentiment-gallery-close]").forEach((el) => {
+        el.addEventListener("click", closeModal);
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && modal.classList.contains("is-open")) closeModal();
+      });
+    })();
+
+    (function opsVisualGalleryModal() {
+      const modal = document.getElementById("opsVisualModal");
+      const scrollEl = document.getElementById("opsVisualScroll");
+      const trigger = document.querySelector(".p3-ops-visual-trigger");
+      if (!modal || !trigger) return;
+
+      function openModal() {
+        modal.classList.add("is-open");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("video-modal-open");
+        if (scrollEl) scrollEl.scrollTop = 0;
+      }
+
+      function closeModal() {
+        modal.classList.remove("is-open");
+        modal.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("video-modal-open");
+      }
+
+      trigger.addEventListener("click", (e) => {
+        e.stopPropagation();
+        openModal();
+      });
+
+      trigger.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          openModal();
+        }
+      });
+
+      modal.querySelectorAll("[data-ops-visual-close]").forEach((el) => {
+        el.addEventListener("click", closeModal);
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && modal.classList.contains("is-open")) closeModal();
+      });
+    })();
+
+    (function digitalHumanGalleryModal() {
+      const modal = document.getElementById("digitalHumanModal");
+      const scrollEl = document.getElementById("digitalHumanScroll");
+      const trigger = document.querySelector(".p3-digital-human-trigger");
+      if (!modal || !trigger) return;
+
+      const aeSlot = modal.querySelector("[data-digital-human-ae]");
+      const aeVideo = document.getElementById("digitalHumanAeVideo");
+      const aePlay = modal.querySelector("[data-digital-human-ae-play]");
+
+      function openModal() {
+        modal.classList.add("is-open");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("video-modal-open");
+        if (scrollEl) scrollEl.scrollTop = 0;
+      }
+
+      function closeModal() {
+        if (aeVideo) {
+          aeVideo.pause();
+          aeVideo.currentTime = 0;
+        }
+        if (aeSlot) aeSlot.classList.remove("is-playing");
+        modal.classList.remove("is-open");
+        modal.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("video-modal-open");
+      }
+
+      if (aeSlot && aeVideo && aePlay) {
+        aePlay.addEventListener("click", (e) => {
+          e.stopPropagation();
+          if (aeVideo.paused) {
+            const p = aeVideo.play();
+            if (p && typeof p.catch === "function") p.catch(() => {});
+          } else {
+            aeVideo.pause();
+          }
+        });
+
+        aeVideo.addEventListener("click", (e) => {
+          e.stopPropagation();
+          if (!aeVideo.paused) aeVideo.pause();
+        });
+
+        aeVideo.addEventListener("play", () => {
+          aeSlot.classList.add("is-playing");
+        });
+
+        aeVideo.addEventListener("pause", () => {
+          aeSlot.classList.remove("is-playing");
+        });
+
+        aeVideo.addEventListener("ended", () => {
+          aeSlot.classList.remove("is-playing");
+        });
+      }
+
+      trigger.addEventListener("click", (e) => {
+        e.stopPropagation();
+        openModal();
+      });
+
+      trigger.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          openModal();
+        }
+      });
+
+      modal.querySelectorAll("[data-digital-human-close]").forEach((el) => {
+        el.addEventListener("click", closeModal);
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && modal.classList.contains("is-open")) closeModal();
+      });
     })();
   </script>
 </body>
