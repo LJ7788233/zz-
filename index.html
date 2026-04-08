@@ -1754,6 +1754,39 @@
       window.addEventListener("resize", updateScale);
     })();
 
+    (function setupDeferredModalMedia() {
+      function ensureModalMediaLoaded(modal) {
+        if (!modal) return;
+        modal.querySelectorAll("img[data-src]").forEach((img) => {
+          if (!img.getAttribute("src")) img.setAttribute("src", img.getAttribute("data-src"));
+        });
+        modal.querySelectorAll("video[data-src]").forEach((video) => {
+          if (!video.getAttribute("src")) {
+            video.setAttribute("src", video.getAttribute("data-src"));
+            video.load();
+          }
+        });
+      }
+
+      window.ensureModalMediaLoaded = ensureModalMediaLoaded;
+
+      document.querySelectorAll(".cis-gallery-modal").forEach((modal) => {
+        modal.querySelectorAll("img[src]").forEach((img) => {
+          img.setAttribute("data-src", img.getAttribute("src"));
+          img.removeAttribute("src");
+          img.setAttribute("loading", "lazy");
+          img.setAttribute("decoding", "async");
+          img.setAttribute("fetchpriority", "low");
+        });
+
+        modal.querySelectorAll("video[src]").forEach((video) => {
+          video.setAttribute("data-src", video.getAttribute("src"));
+          video.removeAttribute("src");
+          video.setAttribute("preload", "none");
+        });
+      });
+    })();
+
     (function revealExperienceOnPage2() {
       const page2 = document.getElementById("page2");
       const introHeader = document.getElementById("introHeader");
@@ -1835,6 +1868,7 @@
       if (!src) return;
 
       function openGallery() {
+        window.ensureModalMediaLoaded(galleryModal);
         galleryModal.classList.add("is-open");
         galleryModal.setAttribute("aria-hidden", "false");
         document.body.classList.add("video-modal-open");
@@ -1971,6 +2005,7 @@
         modal.classList.add("is-open");
         modal.setAttribute("aria-hidden", "false");
         document.body.classList.add("video-modal-open");
+        window.ensureModalMediaLoaded(modal);
         if (scrollEl) scrollEl.scrollTop = 0;
       }
 
@@ -2011,6 +2046,7 @@
         modal.classList.add("is-open");
         modal.setAttribute("aria-hidden", "false");
         document.body.classList.add("video-modal-open");
+        window.ensureModalMediaLoaded(modal);
         if (scrollEl) scrollEl.scrollTop = 0;
       }
 
@@ -2051,6 +2087,7 @@
         modal.classList.add("is-open");
         modal.setAttribute("aria-hidden", "false");
         document.body.classList.add("video-modal-open");
+        window.ensureModalMediaLoaded(modal);
         if (scrollEl) scrollEl.scrollTop = 0;
       }
 
@@ -2092,6 +2129,7 @@
       const aePlay = modal.querySelector("[data-digital-human-ae-play]");
 
       function openModal() {
+        window.ensureModalMediaLoaded(modal);
         modal.classList.add("is-open");
         modal.setAttribute("aria-hidden", "false");
         document.body.classList.add("video-modal-open");
