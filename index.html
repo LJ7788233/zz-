@@ -1755,17 +1755,54 @@
     })();
 
     (function setupDeferredModalMedia() {
+      function loadMedia(el) {
+        if (!el || el.getAttribute("src")) return;
+        const dataSrc = el.getAttribute("data-src");
+        if (!dataSrc) return;
+        el.setAttribute("src", dataSrc);
+        if (el.tagName === "VIDEO") el.load();
+      }
+
+      function setupIncrementalImageLoading(modal) {
+        if (!modal || modal._imageObserverReady) return;
+        const scrollRoot = modal.querySelector(".cis-gallery-scroll");
+        if (!scrollRoot) return;
+
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              loadMedia(entry.target);
+              io.unobserve(entry.target);
+            });
+          },
+          {
+            root: scrollRoot,
+            rootMargin: "1200px 0px 1200px 0px",
+            threshold: 0.01
+          }
+        );
+
+        modal.querySelectorAll("img[data-src]").forEach((img, index) => {
+          // First segment: immediately visible when modal opens.
+          if (index === 0) return;
+          io.observe(img);
+        });
+
+        modal._imageObserverReady = true;
+      }
+
       function ensureModalMediaLoaded(modal) {
         if (!modal) return;
-        modal.querySelectorAll("img[data-src]").forEach((img) => {
-          if (!img.getAttribute("src")) img.setAttribute("src", img.getAttribute("data-src"));
-        });
+        const firstImg = modal.querySelector("img[data-src]");
+        if (firstImg) loadMedia(firstImg);
         modal.querySelectorAll("video[data-src]").forEach((video) => {
           if (!video.getAttribute("src")) {
             video.setAttribute("src", video.getAttribute("data-src"));
             video.load();
           }
         });
+        setupIncrementalImageLoading(modal);
       }
 
       window.ensureModalMediaLoaded = ensureModalMediaLoaded;
@@ -1782,8 +1819,15 @@
         modal.querySelectorAll("video[src]").forEach((video) => {
           video.setAttribute("data-src", video.getAttribute("src"));
           video.removeAttribute("src");
-          video.setAttribute("preload", "none");
+          video.setAttribute("preload", "metadata");
         });
+      });
+    })();
+
+    (function registerServiceWorker() {
+      if (!("serviceWorker" in navigator)) return;
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./sw.js").catch(() => {});
       });
     })();
 
@@ -2127,8 +2171,13 @@
       const aeSlot = modal.querySelector("[data-digital-human-ae]");
       const aeVideo = document.getElementById("digitalHumanAeVideo");
       const aePlay = modal.querySelector("[data-digital-human-ae-play]");
+      const aeVideoSrc = aeVideo ? (aeVideo.getAttribute("data-src") || aeVideo.getAttribute("src")) : "";
 
       function openModal() {
+        if (aeVideo && aeVideoSrc && !aeVideo.getAttribute("src")) {
+          aeVideo.setAttribute("src", aeVideoSrc);
+          aeVideo.load();
+        }
         window.ensureModalMediaLoaded(modal);
         modal.classList.add("is-open");
         modal.setAttribute("aria-hidden", "false");
@@ -2150,6 +2199,10 @@
       if (aeSlot && aeVideo && aePlay) {
         aePlay.addEventListener("click", (e) => {
           e.stopPropagation();
+          if (aeVideoSrc && !aeVideo.getAttribute("src")) {
+            aeVideo.setAttribute("src", aeVideoSrc);
+            aeVideo.load();
+          }
           if (aeVideo.paused) {
             const p = aeVideo.play();
             if (p && typeof p.catch === "function") p.catch(() => {});
