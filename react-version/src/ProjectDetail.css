@@ -1,0 +1,200 @@
+.project-detail-page {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #070b19 0%, #050914 100%);
+  color: #e7efff;
+  padding: 40px 24px 72px;
+}
+
+.project-back {
+  display: inline-block;
+  color: #9bc0ff;
+  text-decoration: none;
+  border: 1px solid rgba(102, 154, 255, 0.45);
+  border-radius: 999px;
+  padding: 8px 16px;
+  transition: all 180ms ease;
+}
+
+.project-back {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 1300;
+}
+
+.project-back.project-back-icon {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(234, 242, 255, 0.92);
+  border: 1px solid rgba(158, 192, 255, 0.32);
+  background: rgba(10, 20, 44, 0.18);
+  backdrop-filter: blur(3px);
+}
+
+.project-back.project-back-icon span {
+  font-size: 16px;
+  line-height: 1;
+  transform: translateY(0);
+}
+
+.project-back:hover {
+  color: #fff;
+  border-color: rgba(140, 183, 255, 0.85);
+}
+
+.project-detail-card {
+  max-width: 1100px;
+  margin: 24px auto 0;
+  background: rgba(10, 18, 40, 0.68);
+  border: 1px solid rgba(86, 140, 255, 0.28);
+  border-radius: 18px;
+  padding: 24px;
+}
+
+.project-detail-index {
+  margin: 0;
+  color: rgba(151, 178, 255, 0.45);
+  font-size: 56px;
+  line-height: 1;
+}
+
+.project-detail-card h1 {
+  margin: 4px 0 0;
+  font-size: 40px;
+}
+
+.project-detail-subtitle {
+  margin: 8px 0 18px;
+  color: #b7ceff;
+  font-size: 20px;
+}
+
+.project-detail-card img {
+  width: 100%;
+  border-radius: 12px;
+  display: block;
+}
+
+.project-detail-video {
+  width: 100%;
+  border-radius: 12px;
+  display: block;
+  background: #000;
+}
+
+.project-detail-summary {
+  margin: 18px 0 0;
+  color: rgba(210, 225, 255, 0.88);
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.project-detail-card--video h1 {
+  margin-top: 0;
+  font-size: 30px;
+}
+
+.project-detail-card--video .project-detail-summary {
+  margin-top: 10px;
+  margin-bottom: 18px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.project-extra-image-block {
+  margin-top: 24px;
+}
+
+.project-extra-image-block h2 {
+  margin: 0 0 12px;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.project-detail-page--full-image {
+  padding-bottom: 40px;
+}
+
+.project-full-image-wrap {
+  max-width: 1400px;
+  margin: 20px auto 0;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(86, 140, 255, 0.25);
+  background: rgba(8, 14, 30, 0.7);
+  position: relative;
+}
+
+.project-full-image-wrap img {
+  width: 100%;
+  display: block;
+}
+
+.project-full-image-overlay-video {
+  position: absolute;
+  left: var(--ov-left);
+  top: var(--ov-top);
+  width: var(--ov-width);
+  height: var(--ov-height);
+  display: block;
+  border: 0;
+  border-radius: 8px;
+  background: #000;
+}
+
+.project-full-image-hotspot {
+  position: absolute;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.project-hotspot-video-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.project-hotspot-video-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(2, 8, 22, 0.8);
+  border: 0;
+}
+
+.project-hotspot-video-panel {
+  position: relative;
+  width: min(1100px, calc(100vw - 32px));
+  max-height: calc(100vh - 56px);
+  z-index: 1;
+}
+
+.project-hotspot-video-panel video {
+  width: 100%;
+  max-height: calc(100vh - 56px);
+  border-radius: 12px;
+  display: block;
+  background: #000;
+  object-fit: contain;
+}
+
+.project-hotspot-video-close {
+  position: absolute;
+  top: -42px;
+  right: 0;
+  border: 1px solid rgba(140, 183, 255, 0.75);
+  color: #eaf2ff;
+  background: rgba(12, 24, 48, 0.88);
+  border-radius: 999px;
+  padding: 6px 14px;
+  cursor: pointer;
+}
