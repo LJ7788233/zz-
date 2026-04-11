@@ -34,8 +34,6 @@ const ABOUT_IMG_07 = "/assets/about-07.jpg";
 const HERO_HEIGHT = 1080;
 const INTRO_HEIGHT = 1080;
 const OVERVIEW_HEIGHT = 2898;
-/** 移动端项目概览纵向排版时的设计稿高度（与 App.css .s3-mobile 一致） */
-const MOBILE_OVERVIEW_HEIGHT = 5200;
 const PROFILE_HEIGHT = 1080;
 const END_HEIGHT = 1080;
 const NAV_ITEMS = [
@@ -45,17 +43,6 @@ const NAV_ITEMS = [
   { id: "lab", label: "AI实验室" },
   { id: "contact", label: "联系方式" },
 ];
-
-function computeLiteGraphics() {
-  if (typeof window === "undefined") return false;
-  const narrow = window.matchMedia("(max-width: 768px)").matches;
-  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const mem = navigator.deviceMemory;
-  const cores = navigator.hardwareConcurrency;
-  const lowMem = mem != null && mem <= 4;
-  const lowCpu = cores != null && cores <= 4;
-  return narrow || reduced || lowMem || lowCpu;
-}
 
 export default function App() {
   const navigate = useNavigate();
@@ -76,10 +63,6 @@ export default function App() {
   const [overviewRevealed, setOverviewRevealed] = useState(keepOverviewStableOnReturn);
   const [profileRevealed, setProfileRevealed] = useState(false);
   const [endRevealed, setEndRevealed] = useState(false);
-  const [liteGraphics, setLiteGraphics] = useState(computeLiteGraphics);
-  const [mobileOverviewLayout, setMobileOverviewLayout] = useState(
-    () => typeof window !== "undefined" && window.matchMedia("(max-width: 768px)").matches
-  );
   const heroRef = useRef(null);
   const introRef = useRef(null);
   const overviewRef = useRef(null);
@@ -135,22 +118,6 @@ export default function App() {
     updateScale();
     window.addEventListener("resize", updateScale);
     return () => window.removeEventListener("resize", updateScale);
-  }, []);
-
-  useEffect(() => {
-    const mqNarrow = window.matchMedia("(max-width: 768px)");
-    const mqReduce = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const sync = () => {
-      setLiteGraphics(computeLiteGraphics());
-      setMobileOverviewLayout(mqNarrow.matches);
-    };
-    sync();
-    mqNarrow.addEventListener("change", sync);
-    mqReduce.addEventListener("change", sync);
-    return () => {
-      mqNarrow.removeEventListener("change", sync);
-      mqReduce.removeEventListener("change", sync);
-    };
   }, []);
 
   useEffect(() => {
@@ -319,7 +286,6 @@ export default function App() {
   }, [endRevealed, endMounted]);
 
   useEffect(() => {
-    if (liteGraphics) return undefined;
     const idle = window.requestIdleCallback ?? ((cb) => window.setTimeout(cb, 1200));
     const cancelIdle = window.cancelIdleCallback ?? window.clearTimeout;
 
@@ -353,12 +319,10 @@ export default function App() {
     });
 
     return () => cancelIdle(task);
-  }, [liteGraphics]);
+  }, []);
 
   const effectiveScale = fixedPreview ? 1 : stageScale;
-  const overviewBlockHeight = mobileOverviewLayout ? MOBILE_OVERVIEW_HEIGHT : OVERVIEW_HEIGHT;
-  const stageHeight =
-    (HERO_HEIGHT + INTRO_HEIGHT + overviewBlockHeight + PROFILE_HEIGHT + END_HEIGHT) * effectiveScale;
+  const stageHeight = (HERO_HEIGHT + INTRO_HEIGHT + OVERVIEW_HEIGHT + PROFILE_HEIGHT + END_HEIGHT) * effectiveScale;
 
   return (
     <div className={`page-wrap ${fixedPreview ? "is-fixed-preview" : ""}`}>
@@ -378,18 +342,14 @@ export default function App() {
           <section ref={heroRef} className="hero-frame" aria-label="作品封面">
             <img className="hero-bg" src={BG_IMG} alt="" />
             <div className="hero-half-orb" aria-hidden="true">
-              {liteGraphics ? (
-                <div className="hero-half-orb-fallback" />
-              ) : (
-                <Orb
-                  hoverIntensity={0.2}
-                  rotateOnHover
-                  hue={0}
-                  forceHoverState={false}
-                  backgroundColor="#040711"
-                  active={heroInView}
-                />
-              )}
+              <Orb
+                hoverIntensity={0.2}
+                rotateOnHover
+                hue={0}
+                forceHoverState={false}
+                backgroundColor="#040711"
+                active={heroInView}
+              />
             </div>
 
             <div className="hero-title-group">
@@ -501,7 +461,7 @@ export default function App() {
             ref={overviewRef}
             className={`overview-frame s3 ${overviewRevealed ? "is-revealed" : ""} ${
               keepOverviewStableOnReturn ? "no-enter-animation" : ""
-            } ${mobileOverviewLayout ? "s3-mobile" : ""}`}
+            }`}
             id="project"
             aria-label="项目概览"
           >
@@ -597,17 +557,13 @@ export default function App() {
               <>
                 <div className="s4-bg" />
                 <div className="s4-aurora" aria-hidden="true">
-                  {liteGraphics ? (
-                    <div className="s4-aurora-fallback" />
-                  ) : (
-                    <Aurora
-                      colorStops={["#1afbff", "#7075ff", "#2930ff"]}
-                      blend={0.5}
-                      amplitude={1.0}
-                      speed={0.8}
-                      active={endInView}
-                    />
-                  )}
+                  <Aurora
+                    colorStops={["#1afbff", "#7075ff", "#2930ff"]}
+                    blend={0.5}
+                    amplitude={1.0}
+                    speed={0.8}
+                    active={endInView}
+                  />
                 </div>
 
                 <div className="s4-thankyou s4-anim a1">
