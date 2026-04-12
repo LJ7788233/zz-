@@ -214,7 +214,7 @@ export default function App() {
     const updateActiveFromScroll = () => {
       ticking = false;
       const raw = getComputedStyle(document.documentElement).getPropertyValue("--portfolio-top-fixed-h").trim();
-      const threshold = Number.parseFloat(raw) || 44;
+      const threshold = Number.parseFloat(raw) || 52;
       let next = 0;
       for (let i = 0; i < NAV_ITEMS.length; i++) {
         const el = document.getElementById(NAV_ITEMS[i].id);

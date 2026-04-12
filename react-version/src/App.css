@@ -1,5 +1,5 @@
 :root {
-  --portfolio-top-fixed-h: 44px;
+  --portfolio-top-fixed-h: 52px;
 }
 
 html {
@@ -282,26 +282,26 @@ html {
 
 .header-nav {
   box-sizing: border-box;
-  width: min(328px, 72vw);
-  height: 28px;
+  width: min(400px, 82vw);
+  height: 36px;
   border-radius: 999px;
-  border: 1px solid rgba(140, 161, 255, 0.09);
+  border: 1px solid rgba(140, 161, 255, 0.1);
   background: rgba(167, 212, 255, 0.03);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   align-items: center;
-  padding: 1px 4px;
+  padding: 3px 6px;
   isolation: isolate;
 }
 
 .header-nav .nav-indicator {
   position: absolute;
-  top: 2px;
-  left: calc(4px + var(--active-index, 0) * ((100% - 8px) / 4));
-  width: calc((100% - 8px) / 4);
-  height: calc(100% - 4px);
+  top: 3px;
+  left: calc(6px + var(--active-index, 0) * ((100% - 12px) / 4));
+  width: calc((100% - 12px) / 4);
+  height: calc(100% - 6px);
   border-radius: 999px;
   background: rgba(65, 119, 255, 0.2);
   box-shadow: 0 0 18px rgba(62, 114, 255, 0.25) inset;
@@ -316,8 +316,8 @@ html {
   place-items: center;
   color: rgba(177, 203, 255, 0.55);
   text-decoration: none;
-  font-size: clamp(9px, 0.65vw, 11px);
-  padding: 0.15em 0.08em;
+  font-size: clamp(11px, 0.9vw, 14px);
+  padding: 0.22em 0.14em;
   border-radius: 999px;
   line-height: 1.25;
   white-space: nowrap;
