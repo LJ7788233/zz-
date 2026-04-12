@@ -12,7 +12,7 @@ const DECO_1 = "/assets/deco-1.svg";
 const DECO_2 = "/assets/deco-2.svg";
 const DECO_3 = "/assets/deco-3.svg";
 const INTRO_GLOW_IMG = "/assets/intro-glow.png";
-const INTRO_AVATAR_IMG = "/assets/intro-avatar.png";
+const INTRO_AVATAR_IMG = "/profile-photo.webp";
 const INTRO_DOT_IMG = "/assets/intro-dot.svg";
 const OVERVIEW_BG_GLOW = "/assets/overview-bg-glow.png";
 const OVERVIEW_IMG_01 = "/assets/overview-01.webp";
@@ -36,12 +36,12 @@ const INTRO_HEIGHT = 1080;
 const OVERVIEW_HEIGHT = 2898;
 const PROFILE_HEIGHT = 1080;
 const END_HEIGHT = 1080;
+
 const NAV_ITEMS = [
   { id: "cover", label: "作品封面" },
   { id: "intro", label: "个人介绍" },
   { id: "project", label: "设计项目" },
-  { id: "lab", label: "AI实验室" },
-  { id: "contact", label: "联系方式" },
+  { id: "about", label: "关于我" },
 ];
 
 export default function App() {
@@ -210,6 +210,35 @@ export default function App() {
   }, [endMounted]);
 
   useEffect(() => {
+    let ticking = false;
+    const updateActiveFromScroll = () => {
+      ticking = false;
+      const raw = getComputedStyle(document.documentElement).getPropertyValue("--portfolio-top-fixed-h").trim();
+      const threshold = Number.parseFloat(raw) || 44;
+      let next = 0;
+      for (let i = 0; i < NAV_ITEMS.length; i++) {
+        const el = document.getElementById(NAV_ITEMS[i].id);
+        if (!el) continue;
+        if (el.getBoundingClientRect().top <= threshold) next = i;
+      }
+      setActiveNav((prev) => (prev === next ? prev : next));
+    };
+    const onScrollOrResize = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(updateActiveFromScroll);
+      }
+    };
+    window.addEventListener("scroll", onScrollOrResize, { passive: true });
+    window.addEventListener("resize", onScrollOrResize, { passive: true });
+    requestAnimationFrame(updateActiveFromScroll);
+    return () => {
+      window.removeEventListener("scroll", onScrollOrResize);
+      window.removeEventListener("resize", onScrollOrResize);
+    };
+  }, []);
+
+  useEffect(() => {
     const target = introRef.current;
     if (!target || !introMounted) return;
 
@@ -326,6 +355,26 @@ export default function App() {
 
   return (
     <div className={`page-wrap ${fixedPreview ? "is-fixed-preview" : ""}`}>
+      <div className="portfolio-top-fixed">
+        <div className="portfolio-top-fixed__blur" aria-hidden="true" />
+        <header
+          className="header-nav"
+          style={{ "--active-index": activeNav }}
+        >
+          <span className="nav-indicator" aria-hidden="true" />
+          {NAV_ITEMS.map((item, index) => (
+            <a
+              key={item.id}
+              href={`#${item.id}`}
+              className={index === activeNav ? "is-active" : ""}
+              onClick={() => setActiveNav(index)}
+            >
+              {item.label}
+            </a>
+          ))}
+        </header>
+      </div>
+
       <button
         type="button"
         className="preview-toggle"
@@ -339,7 +388,7 @@ export default function App() {
           className="portfolio-stage"
           style={{ transform: `translateX(-50%) scale(${effectiveScale})` }}
         >
-          <section ref={heroRef} className="hero-frame" aria-label="作品封面">
+          <section ref={heroRef} className="hero-frame" id="cover" aria-label="作品封面">
             <img className="hero-bg" src={BG_IMG} alt="" />
             <div className="hero-half-orb" aria-hidden="true">
               <Orb
@@ -378,25 +427,6 @@ export default function App() {
             <button type="button" className="hero-deco d3" aria-label="装饰3">
               <img src={DECO_3} alt="" />
             </button>
-
-            <div className="hero-top-mask" aria-hidden="true" />
-
-            <header
-              className="header-nav"
-              style={{ "--active-index": activeNav }}
-            >
-              <span className="nav-indicator" aria-hidden="true" />
-              {NAV_ITEMS.map((item, index) => (
-                <a
-                  key={item.id}
-                  href={`#${item.id}`}
-                  className={index === activeNav ? "is-active" : ""}
-                  onClick={() => setActiveNav(index)}
-                >
-                  {item.label}
-                </a>
-              ))}
-            </header>
           </section>
 
           <section
@@ -417,7 +447,6 @@ export default function App() {
                 <div className="s2-panel">
                   <article className="s2-avatar-card s2-anim a2">
                     <img className="s2-avatar" src={INTRO_AVATAR_IMG} alt="刘婕照片" loading="lazy" decoding="async" />
-                    <div className="s2-avatar-mask" />
                   </article>
 
                   <div className="s2-head s2-anim a3">
@@ -486,12 +515,12 @@ export default function App() {
 
                 <div className="s3-row r2 s3-anim a3">
                   <article className="s3-card media" role="button" tabIndex={0} onClick={() => openProject("/project/mobile-ai")}>
-                    <img src={OVERVIEW_IMG_02} alt="AI安检助手项目图" loading="lazy" decoding="async" />
+                    <img src={OVERVIEW_IMG_02} alt="AI舆情助手" loading="lazy" decoding="async" />
                   </article>
                   <article className="s3-card text" role="button" tabIndex={0} onClick={() => openProject("/project/mobile-ai")}>
                     <p className="idx">02</p>
                     <h3>移动端</h3>
-                    <span>AI安检助手</span>
+                    <span>AI舆情助手</span>
                   </article>
                 </div>
 
@@ -525,8 +554,8 @@ export default function App() {
           <section
             ref={profileRef}
             className={`profile-frame s5 ${profileRevealed ? "is-revealed" : ""}`}
-            id="lab"
-            aria-label="补充个人介绍"
+            id="about"
+            aria-label="关于我"
           >
             {profileMounted && (
               <div className="s5-inner">

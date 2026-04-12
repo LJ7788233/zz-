@@ -1034,6 +1034,368 @@
       overflow: hidden;
     }
 
+    .frame.page-5 {
+      height: 6720px;
+      background: linear-gradient(180deg, #000 8%, #0d1633 48%, #020307 92%);
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Replace old pages with the new design page */
+    .frame.page-1,
+    .frame.page-2,
+    .frame.page-3,
+    .frame.page-4 {
+      display: none !important;
+    }
+
+    .p5-glow {
+      position: absolute;
+      width: 1511px;
+      height: 1511px;
+      opacity: 0.72;
+      pointer-events: none;
+      animation: p5Drift 18s ease-in-out infinite alternate;
+    }
+    .p5-glow.g1 { right: 692px; top: 911px; }
+    .p5-glow.g2 { right: -243px; top: 3030px; animation-duration: 22s; }
+    .p5-glow img { width: 100%; height: 100%; display: block; }
+
+    .p5-header {
+      position: sticky;
+      left: 0;
+      top: 0;
+      width: 1920px;
+      height: 96px;
+      z-index: 200;
+      pointer-events: none;
+    }
+    .p5-header-bg {
+      position: absolute;
+      inset: 0;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(8, 8, 22, 0.1);
+      opacity: 0;
+      transition: opacity .28s ease;
+    }
+    .p5-header-bg.is-visible {
+      opacity: 1;
+    }
+    .p5-nav {
+      position: absolute;
+      left: 50%;
+      top: 26px;
+      transform: translateX(-50%);
+      z-index: 2;
+      width: 490px;
+      height: 44px;
+      border-radius: 999px;
+      border: 1px solid rgba(140, 161, 255, 0.08);
+      background: rgba(167, 212, 255, 0.02);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 3px 8px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      pointer-events: auto;
+    }
+    .p5-nav a {
+      color: rgba(177, 203, 255, 0.65);
+      text-decoration: none;
+      font-size: 16px;
+      line-height: 20px;
+      padding: 8px 10px;
+      border-radius: 50px;
+      transition: color .2s ease, background .2s ease, font-weight .2s ease, transform .2s ease;
+    }
+    .p5-nav a:hover { color: #fff; background: rgba(65, 119, 255, 0.2); }
+    .p5-nav a.is-active {
+      color: #fff;
+      background: rgba(65, 119, 255, 0.2);
+      font-weight: 600;
+    }
+    .p5-nav a:not(.is-active):hover {
+      color: rgba(240, 246, 255, 0.95);
+      transform: translateY(-1px);
+      font-weight: 500;
+    }
+
+    .page-5 .p5-reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+    .page-5.p5-active .p5-reveal {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .page-5.p5-active .p5-delay-1 { transition-delay: .1s; }
+    .page-5.p5-active .p5-delay-2 { transition-delay: .2s; }
+    .page-5.p5-active .p5-delay-3 { transition-delay: .3s; }
+    .page-5.p5-active .p5-delay-4 { transition-delay: .4s; }
+
+    #page5-top, #page5-intro, #page5-projects, #page5-lab, #page5-end {
+      scroll-margin-top: 84px;
+    }
+
+    .p5-thumb-img {
+      object-fit: contain !important;
+      background: rgba(8, 14, 33, 0.7);
+    }
+    .p5-cover-text {
+      position: relative;
+      z-index: 3;
+      display: block;
+      object-fit: contain;
+      image-rendering: auto;
+    }
+    .p5-cover-aurora {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1920px;
+      height: 1080px;
+      z-index: 1;
+      pointer-events: none;
+      opacity: 0.9;
+      mix-blend-mode: screen;
+      overflow: hidden;
+    }
+    .p5-cover-aurora canvas {
+      width: 100% !important;
+      height: 100% !important;
+      display: block;
+      filter: blur(6px) saturate(1.08);
+      transform: scale(1.05);
+      transform-origin: center top;
+    }
+    .p5-cover-deco {
+      position: absolute;
+      z-index: 4;
+      transform-origin: center center;
+      cursor: pointer;
+      --hover-scale: 1;
+      transition: filter .25s ease;
+    }
+    .p5-cover-deco img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      pointer-events: none;
+    }
+    .p5-cover-deco.d1 { animation: p5CoverSpinCW 26s linear infinite; }
+    .p5-cover-deco.d2 { animation: p5CoverSpinCCW 29s linear infinite; }
+    .p5-cover-deco.d3 { animation: p5CoverSpinCW 32s linear infinite; }
+    .p5-cover-deco:hover {
+      --hover-scale: 1.06;
+      filter: drop-shadow(0 0 16px rgba(119, 167, 255, .55));
+    }
+    @keyframes p5CoverSpinCW {
+      from { transform: rotate(0deg) scale(var(--hover-scale)); }
+      to { transform: rotate(360deg) scale(var(--hover-scale)); }
+    }
+    @keyframes p5CoverSpinCCW {
+      from { transform: rotate(360deg) scale(var(--hover-scale)); }
+      to { transform: rotate(0deg) scale(var(--hover-scale)); }
+    }
+
+    .p5-hero {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+    }
+    .p5-hero-bg {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1920px;
+      height: 1080px;
+    }
+    .p5-hero-bg img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .p5-design { position: absolute; left: 525px; top: 284px; width: 416px; height: 84px; }
+    .p5-portfolio { position: absolute; left: 525px; top: 384px; width: 794px; height: 102px; }
+    .p5-year { position: absolute; left: 525px; top: 502px; width: 364px; height: 110px; }
+    .p5-ui-badge { position: absolute; left: 922px; top: 317px; width: 190px; height: 110px; }
+    .p5-ring { position: absolute; width: 138px; height: 138px; top: 633px; animation: spinSlow1 25s linear infinite; }
+    .p5-ring.r1 { left: 1140px; width: 147px; height: 147px; top: 628px; }
+    .p5-ring.r2 { left: 1305px; animation: spinSlow2 28s linear infinite reverse; }
+    .p5-ring.r3 { left: 993px; animation-duration: 30s; }
+    .p5-hero img { width: 100%; height: 100%; display: block; }
+
+    .p5-section-title {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%) translateY(26px);
+      opacity: 0;
+      text-align: center;
+      transition: opacity .8s ease, transform .8s ease;
+    }
+    .p5-section-title .cn { color: #477dff; font-size: 32px; letter-spacing: 1.6px; margin: 0; }
+    .p5-section-title .en { color: #c4d0ff; font-size: 22px; letter-spacing: 1.1px; margin: -2px 0 0; text-transform: uppercase; }
+
+    .p5-intro-card {
+      position: absolute;
+      left: 295px;
+      top: 1189px;
+      width: 610px;
+      height: 752px;
+      border-radius: 16px;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+    .p5-intro-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .p5-timeline {
+      position: absolute;
+      left: 932px;
+      top: 1180px;
+      width: 760px;
+      color: #b1cbff;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .8s ease .1s, transform .8s ease .1s;
+    }
+    .p5-timeline h3 { margin: 0 0 8px; font-size: 46px; color: #b1cbff; letter-spacing: 2px; }
+    .p5-timeline p { margin: 12px 0; font-size: 18px; line-height: 1.45; opacity: .82; }
+
+    .p5-projects {
+      position: absolute;
+      left: 240px;
+      top: 2380px;
+      width: 1440px;
+      display: grid;
+      gap: 42px;
+    }
+    .p5-project-row {
+      display: grid;
+      grid-template-columns: 600px 556px;
+      gap: 140px;
+      align-items: center;
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .75s ease, transform .75s ease;
+    }
+    .p5-project-row.reverse { grid-template-columns: 556px 600px; }
+    .p5-project-card {
+      height: 310px;
+      border-radius: 14px;
+      background: linear-gradient(90deg, rgba(76,154,255,0.08), rgba(76,154,255,0));
+      border: 1px solid rgba(120, 155, 255, .16);
+      padding: 40px;
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+      cursor: pointer;
+    }
+    .p5-project-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(176, 203, 255, .4);
+      box-shadow: 0 16px 36px rgba(31, 82, 190, .22);
+    }
+    .p5-project-card .idx { font-size: 64px; color: rgba(117,138,221,.27); margin: 0; }
+    .p5-project-card .title {
+      margin: -10px 0 20px;
+      font-size: 34px;
+      background: linear-gradient(185deg, #fff 25.591%, #87aaff 97.952%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .p5-project-card .sub { margin: 10px 0; color: #b1cbff; font-size: 20px; letter-spacing: 1px; }
+    .p5-project-thumb {
+      height: 310px;
+      border-radius: 14px;
+      overflow: hidden;
+      transition: transform .26s ease, box-shadow .26s ease;
+      cursor: pointer;
+    }
+    .p5-project-thumb:hover {
+      transform: translateY(-6px) scale(1.01);
+      box-shadow: 0 14px 34px rgba(39,90,220,.25);
+    }
+    .p5-project-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .p5-materials {
+      position: absolute;
+      left: 240px;
+      top: 5120px;
+      width: 1440px;
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+    .p5-materials-grid {
+      margin-top: 160px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+    .p5-materials-grid img {
+      width: 100%;
+      height: 472px;
+      object-fit: cover;
+      border-radius: 12px;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .p5-materials-grid img:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 14px 40px rgba(24, 74, 188, .3);
+    }
+
+    .p5-end {
+      position: absolute;
+      left: 0;
+      top: 5640px;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+    .p5-end > img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .p5-end-thanks {
+      position: absolute;
+      left: 50%;
+      top: 440px;
+      width: 939px;
+      transform: translateX(-50%);
+    }
+    .p5-end-thanks img { width: 100%; height: auto; display: block; }
+    .p5-end-deco { position: absolute; animation: p5Float 4.8s ease-in-out infinite; }
+    .p5-end-deco.d1 { left: 1519px; top: 475px; width: 272px; height: 272px; }
+    .p5-end-deco.d2 { left: 388px; top: 433px; width: 178px; height: 178px; animation-delay: .8s; }
+    .p5-end-deco.d3 { left: 129px; top: 713px; width: 209px; height: 209px; animation-delay: 1.2s; }
+    .p5-end-deco img { width: 100%; height: 100%; display: block; }
+
+    .page-5.p5-active .p5-section-title,
+    .page-5.p5-active .p5-intro-card,
+    .page-5.p5-active .p5-timeline,
+    .page-5.p5-active .p5-project-row,
+    .page-5.p5-active .p5-materials,
+    .page-5.p5-active .p5-end {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .page-5.p5-active .p5-project-row.r2 { transition-delay: .12s; }
+    .page-5.p5-active .p5-project-row.r3 { transition-delay: .24s; }
+    .page-5.p5-active .p5-project-row.r4 { transition-delay: .36s; }
+
+    @keyframes p5Float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes p5Drift {
+      from { transform: translate3d(0,0,0) scale(1); }
+      to { transform: translate3d(-24px, 14px, 0) scale(1.02); }
+    }
+
     .p4-bg-cut {
       position: absolute;
       left: 0;
@@ -1642,6 +2004,126 @@
           <img src="https://www.figma.com/api/mcp/asset/81ae9dd8-017b-459e-b913-908d2ecdc355" alt="" />
         </div>
       </section>
+
+      <section class="frame page-5" id="page5">
+        <div style="position:absolute;inset:0;background:linear-gradient(180deg,#000 18%,#0d1633 48%,#020307 86%);"></div>
+        <div style="position:absolute;right:692px;top:911px;width:1511px;height:1511px;opacity:.77;"><img src="https://www.figma.com/api/mcp/asset/dfa719d7-857a-44bb-846c-884bd7f55fe3" alt="" style="width:100%;height:100%;display:block;" /></div>
+        <div style="position:absolute;right:-243px;top:3030px;width:1511px;height:1511px;opacity:.77;"><img src="https://www.figma.com/api/mcp/asset/dfa719d7-857a-44bb-846c-884bd7f55fe3" alt="" style="width:100%;height:100%;display:block;" /></div>
+
+        <div id="page5-top" style="position:absolute;left:0;top:0;width:1920px;height:1080px;overflow:hidden;">
+          <img src="https://www.figma.com/api/mcp/asset/be735ee7-ce8c-4b62-95f2-a5a84550ea90" alt="" style="position:absolute;left:0;top:0;width:1920px;height:1080px;display:block;" />
+          <div class="p5-cover-aurora" id="p5Aurora" aria-hidden="true"></div>
+          <div style="position:absolute;left:525px;top:284px;width:794.132px;height:328px;">
+            <img class="p5-cover-text" src="https://www.figma.com/api/mcp/asset/b0ab3bc0-834d-4374-85fe-002d5987f5db" alt="DESIGN" style="position:absolute;left:0;top:0;width:416px;height:84px;" />
+            <img class="p5-cover-text" src="https://www.figma.com/api/mcp/asset/4d723cfe-8bed-40de-8c33-7aec9750adb7" alt="PORTFOLIO" style="position:absolute;left:0.13px;top:100px;width:793.999px;height:102px;" />
+            <div style="position:absolute;left:0;top:218px;width:364px;height:110px;">
+              <img class="p5-cover-text" src="https://www.figma.com/api/mcp/asset/620d192a-4d95-409f-aac0-bc5f5a824171" alt="2026" style="position:absolute;left:2.84px;top:19.82px;width:357.361px;height:68.592px;" />
+            </div>
+          </div>
+          <div class="p5-cover-deco d1" style="left:1140.73px;top:628px;width:147.293px;height:147.293px;"><img src="https://www.figma.com/api/mcp/asset/a68147cd-d2e4-4a72-90a1-de410532bec9" alt="" /></div>
+          <div class="p5-cover-deco d2" style="left:993px;top:633px;width:138.01px;height:138.01px;"><img src="https://www.figma.com/api/mcp/asset/91ef6565-0c80-4be8-a5ac-56c95b4a4004" alt="" /></div>
+          <div class="p5-cover-deco d3" style="left:1305.01px;top:633px;width:138.01px;height:138.01px;"><img src="https://www.figma.com/api/mcp/asset/69c006bb-e39c-469e-bba8-7330e899ce1b" alt="" /></div>
+        </div>
+
+        <div class="p5-header" id="page5Header" style="display:none;">
+          <div class="p5-header-bg" id="page5HeaderBg"></div>
+          <div class="p5-nav" aria-label="page5 nav">
+            <a href="#page5-top" class="is-active">作品封面</a>
+            <a href="#page5-intro">个人介绍</a>
+            <a href="#page5-projects">设计项目</a>
+            <a href="#page5-lab">AI实验室</a>
+            <a href="#page5-end">联系方式</a>
+          </div>
+        </div>
+
+        <div id="page5-intro" class="p5-reveal" style="position:absolute;left:50%;top:991px;transform:translateX(-50%);text-align:center;">
+          <p style="margin:0;color:#477dff;font-size:32px;letter-spacing:1.6px;">个人介绍</p>
+          <p style="margin:-2px 0 0;color:#c4d0ff;font-size:22px;letter-spacing:1.1px;text-transform:uppercase;">Personal Introduction</p>
+        </div>
+        <img class="p5-reveal p5-delay-1" src="https://www.figma.com/api/mcp/asset/99526c9d-3885-4839-ad50-e7cae7a37165" alt="" style="position:absolute;left:296px;top:1189px;width:354px;height:472px;border-radius:12px;object-fit:cover;" />
+        <img src="https://www.figma.com/api/mcp/asset/db0c7ee8-e4f1-4799-ba5b-93a2efa5f01f" alt="" style="position:absolute;left:919px;top:1195px;width:18px;height:18px;" />
+        <div class="p5-reveal p5-delay-2" style="position:absolute;left:819px;top:1180px;width:866px;height:761px;"><!-- personal intro block -->
+          <p style="position:absolute;left:7px;top:5px;margin:0;color:#b1cbff;font-size:54px;letter-spacing:2.7px;font-weight:800;">刘婕</p>
+          <p style="position:absolute;left:156px;top:5px;margin:0;color:#67f8ff;font-size:26px;letter-spacing:1.3px;">5年设计经验</p>
+          <p style="position:absolute;left:453px;top:5px;margin:0;color:#67f8ff;font-size:26px;letter-spacing:1.3px;">福州大学-211本科</p>
+          <p style="position:absolute;left:156px;top:50px;margin:0;color:#9ca4c2;font-size:22px;">手机号 14760026599</p>
+          <p style="position:absolute;left:453px;top:50px;margin:0;color:#9ca4c2;font-size:22px;">邮箱 1335377500@qq.com</p>
+          <p style="position:absolute;left:0;top:130px;margin:0;color:#9ca4c2;font-size:20px;">2021.11-2025.08</p>
+          <p style="position:absolute;left:172px;top:126px;margin:0;color:#fff;font-size:26px;">金卡智能集团（智能燃气行业龙头）</p>
+          <p style="position:absolute;left:620px;top:131px;margin:0;color:#477dff;font-size:20px;">资深体验设计师</p>
+          <p style="position:absolute;left:172px;top:172px;margin:0;color:#b1cbff;opacity:.82;font-size:17px;line-height:1.55;width:684px;">2023 软件中心年度优秀个人奖，连续3年绩效评定为A。<br>从0到1负责杭州市能源集团（一、二期）大屏、能源隐患管控系统、WEB、小程序、杭州电信智算中心等多个G端项目，从需求到落地全流程推进，带动后续增值业务达成。</p>
+          <p style="position:absolute;left:172px;top:282px;margin:0;color:#b1cbff;opacity:.82;font-size:17px;line-height:1.55;width:684px;">主导展会、招标、展厅类视频设计全链路工作，覆盖策略制定、交互原型、视觉执行。<br>主导团队AI设计技能培训并推动组件库共建，持续提升设计与研发协作效率、缩短交付周期。</p>
+          <p style="position:absolute;left:0;top:340px;margin:0;color:#9ca4c2;font-size:20px;">2020.06-2021.03</p>
+          <p style="position:absolute;left:172px;top:336px;margin:0;color:#fff;font-size:26px;">361度中国有限公司</p>
+          <p style="position:absolute;left:520px;top:341px;margin:0;color:#477dff;font-size:20px;">产品设计助理</p>
+          <p style="position:absolute;left:172px;top:382px;margin:0;color:#b1cbff;opacity:.82;font-size:17px;line-height:1.55;width:684px;">负责流行趋势调研分析，整合归纳并协助电商团队制定产品规划策略，输出当季设计企划案（趋势、主题、色彩、图案、面料、款式），主导21Q2女子系列核心产品研发，最高订货量突破26.4w双。<br>跟进核心鞋款设计开发全流程，对接工厂把控工艺细节与视觉还原度，优化版型贴合度与生产可行性，保障方案高效落地。</p>
+        </div>
+
+        <div id="page5-projects" class="p5-reveal p5-delay-1" style="position:absolute;left:50%;top:2233px;transform:translateX(-50%);text-align:center;">
+          <p style="margin:0;color:#477dff;font-size:32px;letter-spacing:1.6px;">项目概览</p>
+          <p style="margin:-2px 0 0;color:#c4d0ff;font-size:22px;letter-spacing:1.1px;text-transform:uppercase;">Project Overview</p>
+        </div>
+
+        <div class="p5-reveal p5-delay-1" style="position:absolute;left:312px;top:2505px;display:flex;gap:140px;align-items:center;">
+          <div class="p3-cis-trigger" style="width:600px;height:310px;border-radius:14px;padding:40px;background:linear-gradient(90deg,rgba(76,154,255,.06),rgba(76,154,255,0));cursor:pointer;">
+            <p style="margin:0;color:rgba(117,138,221,.27);font-size:64px;">01</p>
+            <p style="margin:-10px 0 18px;font-size:34px;background:linear-gradient(185deg,#fff 25.591%,#87aaff 97.952%);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:700;">B端设计</p>
+            <p style="margin:0;color:#b1cbff;font-size:20px;letter-spacing:1px;">客户信息系统</p>
+          </div>
+          <img class="p3-cis-trigger p5-thumb-img" src="https://www.figma.com/api/mcp/asset/abaadb28-f5eb-4221-a70b-1de9c0f6e49f" alt="" style="width:557px;height:313px;border-radius:19px;cursor:pointer;" />
+        </div>
+
+        <div class="p5-reveal p5-delay-2" style="position:absolute;left:312px;top:3103px;display:flex;gap:140px;align-items:center;">
+          <img class="p3-sentiment-trigger p5-thumb-img" src="https://www.figma.com/api/mcp/asset/fe121363-331a-4722-b905-67840bcb4a22" alt="" style="width:556px;height:306px;border-radius:14px;cursor:pointer;" />
+          <div class="p3-sentiment-trigger" style="width:600px;height:310px;border-radius:14px;padding:40px;background:linear-gradient(90deg,rgba(76,154,255,.06),rgba(76,154,255,0));cursor:pointer;">
+            <p style="margin:0;color:rgba(117,138,221,.27);font-size:64px;">02</p>
+            <p style="margin:-10px 0 18px;font-size:34px;background:linear-gradient(185deg,#fff 25.591%,#87aaff 97.952%);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:700;">移动端</p>
+            <p style="margin:0;color:#b1cbff;font-size:20px;letter-spacing:1px;">AI安检助手</p>
+          </div>
+        </div>
+
+        <div class="p5-reveal p5-delay-3" style="position:absolute;left:312px;top:3701px;display:flex;gap:140px;align-items:center;">
+          <div style="width:600px;height:310px;border-radius:14px;padding:40px;background:linear-gradient(90deg,rgba(76,154,255,.06),rgba(76,154,255,0));">
+            <p style="margin:0;color:rgba(117,138,221,.27);font-size:64px;">03</p>
+            <p style="margin:-10px 0 18px;font-size:34px;background:linear-gradient(185deg,#fff 25.591%,#87aaff 97.952%);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:700;">数据可视化</p>
+            <p class="p3-energy-trigger" style="margin:0 0 14px;color:#b1cbff;font-size:20px;letter-spacing:1px;cursor:pointer;">能源数字大脑</p>
+            <p class="p3-smart-gate-trigger" style="margin:0 0 14px;color:#b1cbff;font-size:20px;letter-spacing:1px;cursor:pointer;">智慧门站</p>
+            <p class="p3-iot-trigger" style="margin:0;color:#b1cbff;font-size:20px;letter-spacing:1px;cursor:pointer;" data-video-src="https://wfl91ymaecqivvtz.public.blob.vercel-storage.com/iot%E8%A7%86%E9%A2%91.mp4">IOT展厅</p>
+          </div>
+          <img class="p3-smart-gate-trigger p5-thumb-img" src="https://www.figma.com/api/mcp/asset/40ce583f-fb56-4d76-a638-98c5d6b2db5e" alt="" style="width:557px;height:310px;border-radius:14px;cursor:pointer;" />
+        </div>
+
+        <div id="page5-lab" class="p5-reveal p5-delay-4" style="position:absolute;left:312px;top:4299px;display:flex;gap:140px;align-items:center;">
+          <img class="p3-ops-visual-trigger p5-thumb-img" src="https://www.figma.com/api/mcp/asset/d9788def-16e1-400c-9d2c-cb8efa70658e" alt="" style="width:557px;height:326px;border-radius:14px;cursor:pointer;" />
+          <div style="width:600px;height:310px;border-radius:14px;padding:40px;background:linear-gradient(90deg,rgba(76,154,255,.06),rgba(76,154,255,0));">
+            <p style="margin:0;color:rgba(117,138,221,.27);font-size:64px;">04</p>
+            <p style="margin:-10px 0 18px;font-size:34px;background:linear-gradient(185deg,#fff 25.591%,#87aaff 97.952%);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:700;">AI实验室</p>
+            <p class="p3-ops-visual-trigger" style="margin:0 0 16px;color:#b1cbff;font-size:20px;letter-spacing:1px;cursor:pointer;">运营视觉类</p>
+            <p class="p3-digital-human-trigger" style="margin:0;color:#b1cbff;font-size:20px;letter-spacing:1px;cursor:pointer;">数字人</p>
+          </div>
+        </div>
+
+        <div class="p5-reveal p5-delay-2" style="position:absolute;left:240px;top:4994px;width:1440px;height:651px;">
+          <div style="position:absolute;left:50%;top:0;transform:translateX(-50%);text-align:center;">
+            <p style="margin:0;color:#477dff;font-size:32px;letter-spacing:1.6px;">视觉物料</p>
+            <p style="margin:-2px 0 0;color:#c4d0ff;font-size:22px;letter-spacing:1.1px;text-transform:uppercase;">Visual Materials</p>
+          </div>
+          <div style="position:absolute;left:0;top:179px;display:grid;grid-template-columns:repeat(4,1fr);gap:22px;width:1440px;">
+            <img src="https://www.figma.com/api/mcp/asset/aef9a075-f3af-45c2-bbee-0214a991ce5d" alt="" style="height:472px;border-radius:12px;width:100%;object-fit:cover;" />
+            <img src="https://www.figma.com/api/mcp/asset/410eecdd-7e3e-48fc-86f3-5bb8e86cceff" alt="" style="height:472px;border-radius:12px;width:100%;object-fit:cover;" />
+            <img src="https://www.figma.com/api/mcp/asset/37f18a34-7b79-44f6-8d7c-34ce0af7cbd4" alt="" style="height:472px;border-radius:12px;width:100%;object-fit:cover;" />
+            <img src="https://www.figma.com/api/mcp/asset/13f16f1c-443f-4283-8f51-5e60fbc51af9" alt="" style="height:472px;border-radius:12px;width:100%;object-fit:cover;" />
+          </div>
+        </div>
+
+        <div id="page5-end" class="p5-reveal p5-delay-3" style="position:absolute;left:0;top:5640px;width:1920px;height:1080px;overflow:hidden;">
+          <img src="https://www.figma.com/api/mcp/asset/fe10604a-6d33-4801-9d62-88059ec00a65" alt="" style="width:100%;height:100%;object-fit:cover;display:block;" />
+          <img src="https://www.figma.com/api/mcp/asset/04b4c42d-96aa-4c9b-8c3a-fa50c8158db0" alt="THANKYOU" style="position:absolute;left:calc(50% - 469px);top:666px;width:939px;height:114px;" />
+          <img src="https://www.figma.com/api/mcp/asset/5ec91791-63ca-41a5-9c64-2c9aea3962d1" alt="" style="position:absolute;left:1519px;top:475px;width:272px;height:272px;" />
+          <img src="https://www.figma.com/api/mcp/asset/c5ef5d07-78ae-4444-adf5-17dd13e6bdde" alt="" style="position:absolute;left:388px;top:433px;width:178px;height:178px;" />
+          <img src="https://www.figma.com/api/mcp/asset/0f8f8774-7786-4808-9866-952493a10b39" alt="" style="position:absolute;left:129px;top:713px;width:209px;height:209px;" />
+        </div>
+      </section>
         </div>
       </div>
     </div>
@@ -1818,11 +2300,12 @@
   <script>
     (function fixed1920Scale() {
       const viewport = document.getElementById("pagesViewport");
+      const pagesRoot = document.getElementById("pagesRoot");
       const baseWidth = 1920;
-      const baseHeight = 4320;
-      if (!viewport) return;
+      if (!viewport || !pagesRoot) return;
 
       function updateScale() {
+        const baseHeight = pagesRoot.scrollHeight;
         const scale = Math.min(window.innerWidth / baseWidth, 1);
         document.documentElement.style.setProperty("--page-scale", String(scale));
         viewport.style.height = `${baseHeight * scale}px`;
@@ -1978,13 +2461,74 @@
       observer.observe(page4);
     })();
 
+    (function activatePage5Motion() {
+      const page5 = document.getElementById("page5");
+      if (!page5) return;
+      const observer = new IntersectionObserver(
+        (entries) => {
+          const entry = entries[0];
+          if (!entry) return;
+          if (entry.isIntersecting) page5.classList.add("p5-active");
+        },
+        { threshold: 0.18 }
+      );
+      observer.observe(page5);
+    })();
+
+    (function page5NavSmoothScroll() {
+      const page5 = document.getElementById("page5");
+      const headerBg = document.getElementById("page5HeaderBg");
+      if (!page5 || !headerBg) return;
+      const links = page5.querySelectorAll(".p5-nav a[href^=\"#\"]");
+      const sections = ["#page5-top", "#page5-intro", "#page5-projects", "#page5-lab", "#page5-end"]
+        .map((selector) => document.querySelector(selector))
+        .filter(Boolean);
+
+      function updateHeaderVisibility() {
+        const show = window.scrollY > 40;
+        headerBg.classList.toggle("is-visible", show);
+      }
+
+      function updateActiveNav() {
+        if (!sections.length) return;
+        const probe = window.scrollY + 180;
+        let currentId = sections[0].id;
+        sections.forEach((section) => {
+          if (section.offsetTop <= probe) currentId = section.id;
+        });
+        links.forEach((link) => {
+          const href = link.getAttribute("href");
+          link.classList.toggle("is-active", href === `#${currentId}`);
+        });
+      }
+
+      window.addEventListener("scroll", () => {
+        updateHeaderVisibility();
+        updateActiveNav();
+      }, { passive: true });
+      updateHeaderVisibility();
+      updateActiveNav();
+
+      links.forEach((link) => {
+        link.addEventListener("click", (e) => {
+          const href = link.getAttribute("href");
+          if (!href) return;
+          const target = document.querySelector(href);
+          if (!target) return;
+          e.preventDefault();
+          const top = window.scrollY + target.getBoundingClientRect().top - 70;
+          window.scrollTo({ top, behavior: "smooth" });
+        });
+      });
+    })();
+
     (function smartGateGalleryAndVideo() {
       const galleryModal = document.getElementById("smartGateGalleryModal");
       const galleryScroll = document.getElementById("smartGateGalleryScroll");
-      const trigger = document.querySelector(".p3-smart-gate-trigger");
+      const triggers = document.querySelectorAll(".p3-smart-gate-trigger");
       const videoModal = document.getElementById("smartGateVideoModal");
       const video = document.getElementById("smartGateVideo");
-      if (!galleryModal || !trigger || !videoModal || !video) return;
+      if (!galleryModal || !triggers.length || !videoModal || !video) return;
 
       const src = galleryModal.getAttribute("data-video-src");
       if (!src) return;
@@ -2023,16 +2567,17 @@
         if (!galleryModal.classList.contains("is-open")) document.body.classList.remove("video-modal-open");
       }
 
-      trigger.addEventListener("click", (e) => {
-        e.stopPropagation();
-        openGallery();
-      });
-
-      trigger.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
+      triggers.forEach((trigger) => {
+        trigger.addEventListener("click", (e) => {
+          e.stopPropagation();
           openGallery();
-        }
+        });
+        trigger.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            openGallery();
+          }
+        });
       });
 
       galleryModal.querySelectorAll("[data-smart-gate-gallery-close]").forEach((el) => {
@@ -2071,10 +2616,10 @@
     (function iotVideoModal() {
       const modal = document.getElementById("iotVideoModal");
       const video = document.getElementById("iotVideo");
-      const trigger = document.querySelector(".p3-iot-trigger");
-      if (!modal || !video || !trigger) return;
+      const triggers = document.querySelectorAll(".p3-iot-trigger");
+      if (!modal || !video || !triggers.length) return;
 
-      const src = trigger.getAttribute("data-video-src");
+      const src = triggers[0].getAttribute("data-video-src");
       if (!src) return;
 
       function openModal() {
@@ -2096,16 +2641,17 @@
         video.pause();
       }
 
-      trigger.addEventListener("click", (e) => {
-        e.stopPropagation();
-        openModal();
-      });
-
-      trigger.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
+      triggers.forEach((trigger) => {
+        trigger.addEventListener("click", (e) => {
+          e.stopPropagation();
           openModal();
-        }
+        });
+        trigger.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            openModal();
+          }
+        });
       });
 
       modal.querySelectorAll("[data-iot-video-close]").forEach((el) => {
@@ -2120,8 +2666,8 @@
     (function cisGalleryModal() {
       const modal = document.getElementById("cisGalleryModal");
       const scrollEl = document.getElementById("cisGalleryScroll");
-      const trigger = document.querySelector(".p3-cis-trigger");
-      if (!modal || !trigger) return;
+      const triggers = document.querySelectorAll(".p3-cis-trigger");
+      if (!modal || !triggers.length) return;
 
       function openModal() {
         modal.classList.add("is-open");
@@ -2137,16 +2683,17 @@
         document.body.classList.remove("video-modal-open");
       }
 
-      trigger.addEventListener("click", (e) => {
-        e.stopPropagation();
-        openModal();
-      });
-
-      trigger.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
+      triggers.forEach((trigger) => {
+        trigger.addEventListener("click", (e) => {
+          e.stopPropagation();
           openModal();
-        }
+        });
+        trigger.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            openModal();
+          }
+        });
       });
 
       modal.querySelectorAll("[data-cis-gallery-close]").forEach((el) => {
@@ -2161,8 +2708,8 @@
     (function sentimentGalleryModal() {
       const modal = document.getElementById("sentimentGalleryModal");
       const scrollEl = document.getElementById("sentimentGalleryScroll");
-      const trigger = document.querySelector(".p3-sentiment-trigger");
-      if (!modal || !trigger) return;
+      const triggers = document.querySelectorAll(".p3-sentiment-trigger");
+      if (!modal || !triggers.length) return;
 
       function openModal() {
         modal.classList.add("is-open");
@@ -2178,16 +2725,17 @@
         document.body.classList.remove("video-modal-open");
       }
 
-      trigger.addEventListener("click", (e) => {
-        e.stopPropagation();
-        openModal();
-      });
-
-      trigger.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
+      triggers.forEach((trigger) => {
+        trigger.addEventListener("click", (e) => {
+          e.stopPropagation();
           openModal();
-        }
+        });
+        trigger.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            openModal();
+          }
+        });
       });
 
       modal.querySelectorAll("[data-sentiment-gallery-close]").forEach((el) => {
@@ -2202,12 +2750,12 @@
     (function energyBrainGalleryModal() {
       const modal = document.getElementById("energyBrainModal");
       const scrollEl = document.getElementById("energyBrainScroll");
-      const trigger = document.querySelector(".p3-energy-trigger");
+      const triggers = document.querySelectorAll(".p3-energy-trigger");
       const videoModal = document.getElementById("energyTreeVideoModal");
       const video = document.getElementById("energyTreeVideo");
       const playHit = modal ? modal.querySelector("[data-energy-tree-play]") : null;
       const videoSrc = "https://wfl91ymaecqivvtz.public.blob.vercel-storage.com/%E5%90%88%E6%88%90%201.mp4";
-      if (!modal || !trigger || !videoModal || !video) return;
+      if (!modal || !triggers.length || !videoModal || !video) return;
 
       function openModal() {
         modal.classList.add("is-open");
@@ -2243,16 +2791,17 @@
         if (!modal.classList.contains("is-open")) document.body.classList.remove("video-modal-open");
       }
 
-      trigger.addEventListener("click", (e) => {
-        e.stopPropagation();
-        openModal();
-      });
-
-      trigger.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
+      triggers.forEach((trigger) => {
+        trigger.addEventListener("click", (e) => {
+          e.stopPropagation();
           openModal();
-        }
+        });
+        trigger.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            openModal();
+          }
+        });
       });
 
       modal.querySelectorAll("[data-energy-close]").forEach((el) => {
@@ -2284,8 +2833,8 @@
     (function opsVisualGalleryModal() {
       const modal = document.getElementById("opsVisualModal");
       const scrollEl = document.getElementById("opsVisualScroll");
-      const trigger = document.querySelector(".p3-ops-visual-trigger");
-      if (!modal || !trigger) return;
+      const triggers = document.querySelectorAll(".p3-ops-visual-trigger");
+      if (!modal || !triggers.length) return;
 
       function openModal() {
         modal.classList.add("is-open");
@@ -2301,16 +2850,17 @@
         document.body.classList.remove("video-modal-open");
       }
 
-      trigger.addEventListener("click", (e) => {
-        e.stopPropagation();
-        openModal();
-      });
-
-      trigger.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
+      triggers.forEach((trigger) => {
+        trigger.addEventListener("click", (e) => {
+          e.stopPropagation();
           openModal();
-        }
+        });
+        trigger.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            openModal();
+          }
+        });
       });
 
       modal.querySelectorAll("[data-ops-visual-close]").forEach((el) => {
@@ -2325,8 +2875,8 @@
     (function digitalHumanGalleryModal() {
       const modal = document.getElementById("digitalHumanModal");
       const scrollEl = document.getElementById("digitalHumanScroll");
-      const trigger = document.querySelector(".p3-digital-human-trigger");
-      if (!modal || !trigger) return;
+      const triggers = document.querySelectorAll(".p3-digital-human-trigger");
+      if (!modal || !triggers.length) return;
 
       const aeSlot = modal.querySelector("[data-digital-human-ae]");
       const aeVideo = document.getElementById("digitalHumanAeVideo");
@@ -2389,16 +2939,17 @@
         });
       }
 
-      trigger.addEventListener("click", (e) => {
-        e.stopPropagation();
-        openModal();
-      });
-
-      trigger.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
+      triggers.forEach((trigger) => {
+        trigger.addEventListener("click", (e) => {
+          e.stopPropagation();
           openModal();
-        }
+        });
+        trigger.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            openModal();
+          }
+        });
       });
 
       modal.querySelectorAll("[data-digital-human-close]").forEach((el) => {
@@ -2408,6 +2959,122 @@
       document.addEventListener("keydown", (e) => {
         if (e.key === "Escape" && modal.classList.contains("is-open")) closeModal();
       });
+    })();
+  </script>
+  <script type="module">
+    import { Renderer, Program, Mesh, Color, Triangle } from "https://esm.sh/ogl@1.0.11";
+
+    const VERT = `#version 300 es
+in vec2 position;
+void main(){ gl_Position = vec4(position, 0.0, 1.0); }`;
+
+    const FRAG = `#version 300 es
+precision highp float;
+uniform float uTime;
+uniform float uAmplitude;
+uniform vec3 uColorStops[3];
+uniform vec2 uResolution;
+uniform float uBlend;
+out vec4 fragColor;
+
+vec3 permute(vec3 x){ return mod(((x * 34.0) + 1.0) * x, 289.0); }
+float snoise(vec2 v){
+  const vec4 C = vec4(0.211324865405187, 0.366025403784439, -0.577350269189626, 0.024390243902439);
+  vec2 i = floor(v + dot(v, C.yy));
+  vec2 x0 = v - i + dot(i, C.xx);
+  vec2 i1 = (x0.x > x0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0);
+  vec4 x12 = x0.xyxy + C.xxzz; x12.xy -= i1; i = mod(i, 289.0);
+  vec3 p = permute(permute(i.y + vec3(0.0, i1.y, 1.0)) + i.x + vec3(0.0, i1.x, 1.0));
+  vec3 m = max(0.5 - vec3(dot(x0,x0), dot(x12.xy,x12.xy), dot(x12.zw,x12.zw)), 0.0);
+  m *= m; m *= m;
+  vec3 x = 2.0 * fract(p * C.www) - 1.0;
+  vec3 h = abs(x) - 0.5;
+  vec3 ox = floor(x + 0.5);
+  vec3 a0 = x - ox;
+  m *= 1.79284291400159 - 0.85373472095314 * (a0*a0 + h*h);
+  vec3 g;
+  g.x = a0.x * x0.x + h.x * x0.y;
+  g.yz = a0.yz * x12.xz + h.yz * x12.yw;
+  return 130.0 * dot(m, g);
+}
+
+struct ColorStop { vec3 color; float position; };
+vec3 rampColor(float f){
+  ColorStop c0 = ColorStop(uColorStops[0], 0.0);
+  ColorStop c1 = ColorStop(uColorStops[1], 0.5);
+  ColorStop c2 = ColorStop(uColorStops[2], 1.0);
+  if (f <= c1.position) return mix(c0.color, c1.color, smoothstep(c0.position, c1.position, f));
+  return mix(c1.color, c2.color, smoothstep(c1.position, c2.position, f));
+}
+
+void main(){
+  vec2 uv = gl_FragCoord.xy / uResolution;
+  vec3 ramp = rampColor(uv.x);
+  float n = snoise(vec2(uv.x * 2.0 + uTime * 0.1, uTime * 0.25)) * 0.5 * uAmplitude;
+  float h = uv.y * 2.0 - exp(n) + 0.2;
+  float intensity = 0.6 * h;
+  float mid = 0.20;
+  float alpha = smoothstep(mid - uBlend * 0.5, mid + uBlend * 0.5, intensity);
+  vec3 color = intensity * ramp;
+  fragColor = vec4(color * alpha, alpha);
+}`;
+
+    (function setupAurora() {
+      const container = document.getElementById("p5Aurora");
+      if (!container) return;
+
+      const renderer = new Renderer({ alpha: true, premultipliedAlpha: true, antialias: true });
+      const gl = renderer.gl;
+      gl.clearColor(0, 0, 0, 0);
+      gl.enable(gl.BLEND);
+      gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
+
+      const geometry = new Triangle(gl);
+      if (geometry.attributes.uv) delete geometry.attributes.uv;
+
+      const colorStops = ["#39b3fe", "#B19EEF", "#5227FF"];
+      const toRgb = (hex) => {
+        const c = new Color(hex);
+        return [c.r, c.g, c.b];
+      };
+
+      const program = new Program(gl, {
+        vertex: VERT,
+        fragment: FRAG,
+        uniforms: {
+          uTime: { value: 0 },
+          uAmplitude: { value: 1.0 },
+          uColorStops: { value: colorStops.map(toRgb) },
+          uResolution: { value: [container.offsetWidth, container.offsetHeight] },
+          uBlend: { value: 0.5 }
+        }
+      });
+
+      const mesh = new Mesh(gl, { geometry, program });
+      container.appendChild(gl.canvas);
+
+      const resize = () => {
+        const width = container.offsetWidth || 1920;
+        const height = container.offsetHeight || 1080;
+        renderer.setSize(width, height);
+        program.uniforms.uResolution.value = [width, height];
+      };
+      window.addEventListener("resize", resize, { passive: true });
+      resize();
+
+      let rafId = 0;
+      const speed = 1.0;
+      const tick = (t) => {
+        rafId = requestAnimationFrame(tick);
+        program.uniforms.uTime.value = t * 0.001 * speed;
+        renderer.render({ scene: mesh });
+      };
+      rafId = requestAnimationFrame(tick);
+
+      window.addEventListener("beforeunload", () => {
+        cancelAnimationFrame(rafId);
+        window.removeEventListener("resize", resize);
+      }, { once: true });
     })();
   </script>
 </body>

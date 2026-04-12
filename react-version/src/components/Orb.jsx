@@ -267,7 +267,8 @@ export default function Orb({
       rafId = requestAnimationFrame(update);
       const dt = (t - lastTime) * 0.001;
       lastTime = t;
-      program.uniforms.iTime.value = t * 0.001;
+      /* 略放慢整体时间，避免封面光感转得过快 */
+      program.uniforms.iTime.value = t * 0.00038;
       program.uniforms.hue.value = hue;
       program.uniforms.hoverIntensity.value = hoverIntensity;
       program.uniforms.backgroundColor.value = hexToVec3(backgroundColor);

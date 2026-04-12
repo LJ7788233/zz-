@@ -12,9 +12,10 @@ export const PROJECTS = [
     id: "mobile-ai",
     index: "02",
     title: "移动端",
-    subtitle: "AI安检助手",
-    cover: "/assets/overview-02.webp",
-    summary: "以任务驱动的移动端体验，结合 AI 辅助提升巡检和处理效率。",
+    subtitle: "AI舆情助手",
+    cover: "/ai-sentiment.webp",
+    summary: "",
+    isFullPageImage: true,
   },
   {
     id: "dataviz-brain",
